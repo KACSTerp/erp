@@ -3585,6 +3585,42 @@ INSERT INTO C_EP_PROXY
 	'PendingTransfers',
 	'',
 	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a907c002-f914-46a2-9138-6e08375c35c1",
+	"a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"8d04e32c-c0e0-4a8b-a383-19d5284b5624");
+INSERT INTO SPR_RS
+	VALUES ("a907c002-f914-46a2-9138-6e08375c35c1",
+	'ReadAccountsLog',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'ReadAccountsLog',
+	'',
+	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6c462c0c-7458-41bd-b568-42ef28d44a66",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"8d04e32c-c0e0-4a8b-a383-19d5284b5624");
+INSERT INTO SPR_RS
+	VALUES ("6c462c0c-7458-41bd-b568-42ef28d44a66",
+	'SendAccountsLog',
+	'',
+	'::SendAccountLogs( Code:param.Code, Name:param.Name, Action:param.Action );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'SendAccountsLog',
+	'',
+	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("4050d50b-4358-41d0-aaf7-7da0e117e17c",
 	"00000000-0000-0000-0000-000000000000",

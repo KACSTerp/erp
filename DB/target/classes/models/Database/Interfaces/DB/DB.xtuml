@@ -81,6 +81,57 @@ INSERT INTO C_PP
 	0,
 	'',
 	"084cbb0e-1ce3-483c-b224-7d04143c390c");
+INSERT INTO C_EP
+	VALUES ("367aa16a-c95f-4d9d-8801-d4fe010911e5",
+	"c8bf3e51-42c0-4341-b849-acea1f7d8cb8",
+	-1,
+	'ReadAccountsLog',
+	'');
+INSERT INTO C_AS
+	VALUES ("367aa16a-c95f-4d9d-8801-d4fe010911e5",
+	'ReadAccountsLog',
+	'',
+	0,
+	"b9eee07a-4899-43c0-9edc-de3a867c4eed");
+INSERT INTO C_EP
+	VALUES ("e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	"c8bf3e51-42c0-4341-b849-acea1f7d8cb8",
+	-1,
+	'SendAccountsLog',
+	'');
+INSERT INTO C_AS
+	VALUES ("e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	'SendAccountsLog',
+	'',
+	1,
+	"367aa16a-c95f-4d9d-8801-d4fe010911e5");
+INSERT INTO C_PP
+	VALUES ("f176b730-262e-494f-9b88-94a14d5ea113",
+	"e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Code',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("20ccd965-846d-48f7-8f93-6bd3f1379f96",
+	"e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Name',
+	'',
+	0,
+	'',
+	"f176b730-262e-494f-9b88-94a14d5ea113");
+INSERT INTO C_PP
+	VALUES ("ea99e6a3-ff45-4a64-8da4-d9a29e93d58b",
+	"e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	"8246f137-ea97-43f9-8d8a-e5993156377b",
+	'Action',
+	'',
+	0,
+	'',
+	"20ccd965-846d-48f7-8f93-6bd3f1379f96");
 INSERT INTO PE_PE
 	VALUES ("c8bf3e51-42c0-4341-b849-acea1f7d8cb8",
 	1,

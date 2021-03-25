@@ -2482,6 +2482,42 @@ INSERT INTO C_EP_PROXY
 	'PendingTransfers',
 	'',
 	'../../Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("2958328e-a61e-4e6b-b775-83297e3df015",
+	"a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"84b7e49f-98e2-4539-b496-50575c189964");
+INSERT INTO SPR_PS
+	VALUES ("2958328e-a61e-4e6b-b775-83297e3df015",
+	'ReadAccountsLog',
+	'',
+	'DB::ReadAccountsLog();',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'ReadAccountsLog',
+	'',
+	'../../Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("0d91134d-0e32-4f23-a59e-1fc918b1cc66",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"84b7e49f-98e2-4539-b496-50575c189964");
+INSERT INTO SPR_PS
+	VALUES ("0d91134d-0e32-4f23-a59e-1fc918b1cc66",
+	'SendAccountsLog',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'SendAccountsLog',
+	'',
+	'../../Interfaces/Finance/Finance.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("4050d50b-4358-41d0-aaf7-7da0e117e17c",
 	"00000000-0000-0000-0000-000000000000",
@@ -2539,6 +2575,42 @@ INSERT INTO C_EP_PROXY
 	"c8bf3e51-42c0-4341-b849-acea1f7d8cb8",
 	-1,
 	'Reply',
+	'',
+	'../../../../../Database/models/Database/Interfaces/DB/DB.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("205d5bce-8448-4c2e-8dcc-0ac2ed21a011",
+	"367aa16a-c95f-4d9d-8801-d4fe010911e5",
+	"4765e5c0-fee4-46e1-85fa-db2ae539c7c0");
+INSERT INTO SPR_RS
+	VALUES ("205d5bce-8448-4c2e-8dcc-0ac2ed21a011",
+	'ReadAccountsLog',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("367aa16a-c95f-4d9d-8801-d4fe010911e5",
+	"c8bf3e51-42c0-4341-b849-acea1f7d8cb8",
+	-1,
+	'ReadAccountsLog',
+	'',
+	'../../../../../Database/models/Database/Interfaces/DB/DB.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("ff98ba71-9cbe-433c-9487-a0c667990151",
+	"e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	"4765e5c0-fee4-46e1-85fa-db2ae539c7c0");
+INSERT INTO SPR_RS
+	VALUES ("ff98ba71-9cbe-433c-9487-a0c667990151",
+	'SendAccountsLog',
+	'',
+	'UI::SendAccountsLog( Code:param.Code, Name:param.Name, Action:param.Action );',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("e3af3c1a-0b53-43b0-af3e-ddd2edd1ba67",
+	"c8bf3e51-42c0-4341-b849-acea1f7d8cb8",
+	-1,
+	'SendAccountsLog',
 	'',
 	'../../../../../Database/models/Database/Interfaces/DB/DB.xtuml');
 INSERT INTO C_I_PROXY

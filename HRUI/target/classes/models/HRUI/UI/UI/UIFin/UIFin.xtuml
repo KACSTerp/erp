@@ -848,6 +848,56 @@ INSERT INTO PE_PE
 	"d402b4d1-527a-422b-aa46-09cc944d2bea",
 	"00000000-0000-0000-0000-000000000000",
 	1);
+INSERT INTO S_SYNC
+	VALUES ("6c738c7d-82fd-4a69-9c85-3b3dd3ba4498",
+	"00000000-0000-0000-0000-000000000000",
+	'SendAccountLogs',
+	'',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	3,
+	'',
+	0);
+INSERT INTO S_SPARM
+	VALUES ("265b58b9-63d8-4575-b968-959fb15c9efb",
+	"6c738c7d-82fd-4a69-9c85-3b3dd3ba4498",
+	'Code',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("2c5f52b1-ee73-41d3-9a46-01b8c41e8ed7",
+	"6c738c7d-82fd-4a69-9c85-3b3dd3ba4498",
+	'Name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"265b58b9-63d8-4575-b968-959fb15c9efb",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("8e6aec2c-2bc8-4ca2-83a1-c85cb63491c9",
+	"6c738c7d-82fd-4a69-9c85-3b3dd3ba4498",
+	'Action',
+	"8246f137-ea97-43f9-8d8a-e5993156377b",
+	0,
+	'',
+	"2c5f52b1-ee73-41d3-9a46-01b8c41e8ed7",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("8246f137-ea97-43f9-8d8a-e5993156377b",
+	"00000000-0000-0000-0000-000000000000",
+	'Account',
+	'',
+	'',
+	'../../../../../../Database/models/Database/SharedTypes/SharedTypes.xtuml');
+INSERT INTO PE_PE
+	VALUES ("6c738c7d-82fd-4a69-9c85-3b3dd3ba4498",
+	1,
+	"d402b4d1-527a-422b-aa46-09cc944d2bea",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("d402b4d1-527a-422b-aa46-09cc944d2bea",
 	1,

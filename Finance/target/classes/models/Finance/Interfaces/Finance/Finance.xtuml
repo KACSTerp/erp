@@ -2174,6 +2174,64 @@ INSERT INTO C_AS
 	'',
 	0,
 	"67b89449-cdac-4c8d-9204-005216c0c726");
+INSERT INTO C_EP
+	VALUES ("a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'ReadAccountsLog',
+	'');
+INSERT INTO C_AS
+	VALUES ("a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	'ReadAccountsLog',
+	'',
+	0,
+	"b76b55d1-346e-4f6f-aaa6-1e3c06fe8237");
+INSERT INTO C_EP
+	VALUES ("c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'SendAccountsLog',
+	'');
+INSERT INTO C_AS
+	VALUES ("c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	'SendAccountsLog',
+	'',
+	1,
+	"a45f9acb-d7aa-49f8-9504-e4febb1905a6");
+INSERT INTO C_PP
+	VALUES ("e5e388f8-1843-48fe-8ca5-204d1e2eef10",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Code',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("99ea39ab-5f4d-48a2-bff7-b728e05aa4d5",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Name',
+	'',
+	0,
+	'',
+	"e5e388f8-1843-48fe-8ca5-204d1e2eef10");
+INSERT INTO C_PP
+	VALUES ("3b4b0209-ec0b-452f-87d6-f77ef44f22c1",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"8246f137-ea97-43f9-8d8a-e5993156377b",
+	'Action',
+	'',
+	0,
+	'',
+	"99ea39ab-5f4d-48a2-bff7-b728e05aa4d5");
+INSERT INTO S_DT_PROXY
+	VALUES ("8246f137-ea97-43f9-8d8a-e5993156377b",
+	"00000000-0000-0000-0000-000000000000",
+	'Account',
+	'',
+	'',
+	'../../../../../Database/models/Database/SharedTypes/SharedTypes.xtuml');
 INSERT INTO PE_PE
 	VALUES ("4050d50b-4358-41d0-aaf7-7da0e117e17c",
 	1,
