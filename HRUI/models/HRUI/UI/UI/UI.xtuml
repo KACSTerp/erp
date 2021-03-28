@@ -2595,7 +2595,7 @@ INSERT INTO SPR_RS
 	VALUES ("507962f4-ca8a-4407-a1c0-a36a0d6da107",
 	'AssignManger',
 	'',
-	'::AssignManger( AccountName:param.AccountName, ProjectCode:param.ProjectCode );',
+	'',
 	1,
 	0,
 	1);
