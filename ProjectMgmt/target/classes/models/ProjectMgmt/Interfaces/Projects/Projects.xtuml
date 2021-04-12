@@ -10,8 +10,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'ReadStrategies',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("f611d3fb-9d80-4a08-af29-b6b81f33b91e",
 	'ReadStrategies',
@@ -23,8 +22,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'SendStrategies',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("e995f3cf-f39a-49fb-b19a-f7fca5a6575f",
 	'SendStrategies',
@@ -63,8 +61,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'Reply',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("6062fcf7-0864-4e03-a22a-bea39834ef9d",
 	'Reply',
@@ -94,8 +91,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'Initialize',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("e0b36002-56f9-4df1-9356-a98484736a3a",
 	'Initialize',
@@ -109,8 +105,7 @@ INSERT INTO C_EP
 	'ReadMilestones',
 	'Get a list of milestones related to
 an initiative. One parameter is enough
-to identify the initiative.',
-	0);
+to identify the initiative.');
 INSERT INTO C_AS
 	VALUES ("0fb486de-51ef-4059-86fb-07272aa62973",
 	'ReadMilestones',
@@ -151,8 +146,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'SendMilestones',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("164afa80-0634-483c-873c-74974775a70c",
 	'SendMilestones',
@@ -290,8 +284,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'CreateInitiative',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("4d8c9fe4-1360-4d30-90fd-12402e63d2a3",
 	'CreateInitiative',
@@ -375,8 +368,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'CreateStrategy',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("a46a1746-64f0-4558-ae36-f10f118eaa24",
 	'CreateStrategy',
@@ -415,8 +407,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'CreateProject',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("b68f3204-5e86-499d-88df-db00b93866ef",
 	'CreateProject',
@@ -482,8 +473,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'ReadInitiatives',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("1afcea8f-1baf-4bd0-999f-9363af4ca62d",
 	'ReadInitiatives',
@@ -495,8 +485,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'SendInitiatives',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("1d5ac5a5-3c6f-45dc-ba1a-b7dd16ef624e",
 	'SendInitiatives',
@@ -562,8 +551,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'ReadProjects',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("bc328c2e-2892-4f5f-869a-c51fcb125847",
 	'ReadProjects',
@@ -575,8 +563,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'SendProjects',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("8dc4a734-be3b-4ab9-a837-6a24b94e3215",
 	'SendProjects',
@@ -642,8 +629,7 @@ INSERT INTO C_EP
 	"b9747524-a416-4a89-a9ef-0062b1f78a12",
 	-1,
 	'AddMilestone',
-	'',
-	0);
+	'');
 INSERT INTO C_AS
 	VALUES ("823d6250-b774-4665-8272-9dc2cc28eadd",
 	'AddMilestone',
@@ -722,126 +708,6 @@ INSERT INTO C_PP
 	0,
 	'',
 	"3cb9bdea-fd2b-4364-abfa-05625bdd0258");
-INSERT INTO C_EP
-	VALUES ("b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"b9747524-a416-4a89-a9ef-0062b1f78a12",
-	-1,
-	'CreateChangeRequest',
-	'',
-	0);
-INSERT INTO C_AS
-	VALUES ("b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	'CreateChangeRequest',
-	'',
-	0,
-	"823d6250-b774-4665-8272-9dc2cc28eadd");
-INSERT INTO C_PP
-	VALUES ("6876219d-2d3a-41e9-9d08-9af537734c0e",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'Description',
-	'',
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO C_PP
-	VALUES ("41eef2af-b7bc-4b1e-b950-7d0d2d2a2d66",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'Justification',
-	'',
-	0,
-	'',
-	"6876219d-2d3a-41e9-9d08-9af537734c0e");
-INSERT INTO C_PP
-	VALUES ("21da3590-10ae-4b45-a79e-9583fd5dc49b",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'ProjectCode',
-	'',
-	0,
-	'',
-	"41eef2af-b7bc-4b1e-b950-7d0d2d2a2d66");
-INSERT INTO C_PP
-	VALUES ("28e9d534-6c9b-4fa7-b424-d84daf0b5964",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'CreationDate',
-	'',
-	0,
-	'',
-	"21da3590-10ae-4b45-a79e-9583fd5dc49b");
-INSERT INTO C_PP
-	VALUES ("48a87389-ec8b-4c3b-a489-50d52372efba",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'ImpactCategory',
-	'',
-	0,
-	'',
-	"28e9d534-6c9b-4fa7-b424-d84daf0b5964");
-INSERT INTO C_PP
-	VALUES ("65184735-a78f-4e4a-9c76-1f98f44ebf03",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'ImpactDetails',
-	'',
-	0,
-	'',
-	"48a87389-ec8b-4c3b-a489-50d52372efba");
-INSERT INTO C_EP
-	VALUES ("aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	"b9747524-a416-4a89-a9ef-0062b1f78a12",
-	-1,
-	'CreateChangeRequestImpact',
-	'',
-	0);
-INSERT INTO C_AS
-	VALUES ("aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	'CreateChangeRequestImpact',
-	'',
-	0,
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e");
-INSERT INTO C_PP
-	VALUES ("87ee2bf2-a3a3-4978-9326-415cd17392a0",
-	"aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'Category',
-	'',
-	0,
-	'',
-	"00000000-0000-0000-0000-000000000000");
-INSERT INTO C_PP
-	VALUES ("bf1eacbf-0567-4a61-9dbd-27e445d95e96",
-	"aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	"ba5eda7a-def5-0000-0000-000000000004",
-	'Details',
-	'',
-	0,
-	'',
-	"87ee2bf2-a3a3-4978-9326-415cd17392a0");
-INSERT INTO C_PP
-	VALUES ("9d943391-8bcf-4c74-9b24-d76bca79a2c1",
-	"aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	"ba5eda7a-def5-0000-0000-000000000002",
-	'ChangeRequestCreationDate',
-	'',
-	0,
-	'',
-	"bf1eacbf-0567-4a61-9dbd-27e445d95e96");
-INSERT INTO C_EP
-	VALUES ("00053e29-0318-4de9-b625-8bc71d10ede1",
-	"b9747524-a416-4a89-a9ef-0062b1f78a12",
-	-1,
-	'InitiateChangeRequest',
-	'',
-	0);
-INSERT INTO C_AS
-	VALUES ("00053e29-0318-4de9-b625-8bc71d10ede1",
-	'InitiateChangeRequest',
-	'',
-	1,
-	"aadb0141-b089-41fb-9f0c-02b0146fa52e");
 INSERT INTO PE_PE
 	VALUES ("b9747524-a416-4a89-a9ef-0062b1f78a12",
 	1,

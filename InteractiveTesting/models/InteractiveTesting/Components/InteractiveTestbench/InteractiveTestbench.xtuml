@@ -3486,60 +3486,6 @@ INSERT INTO C_EP_PROXY
 	'AddMilestone',
 	'',
 	'../../../../../ProjectMgmt/models/ProjectMgmt/Interfaces/Projects/Projects.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("cc630dcc-273e-4420-8c0e-d4d7c48fd647",
-	"b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"41287efb-8074-47e1-b27d-0fff1ac1b588");
-INSERT INTO SPR_RS
-	VALUES ("cc630dcc-273e-4420-8c0e-d4d7c48fd647",
-	'CreateChangeRequest',
-	'',
-	'',
-	3,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("b9687437-2df6-41c0-bb96-f4dfbe905d8e",
-	"b9747524-a416-4a89-a9ef-0062b1f78a12",
-	-1,
-	'CreateChangeRequest',
-	'',
-	'../../../../../ProjectMgmt/models/ProjectMgmt/Interfaces/Projects/Projects.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("f57fe355-f456-449c-b2f6-734ae394381f",
-	"aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	"41287efb-8074-47e1-b27d-0fff1ac1b588");
-INSERT INTO SPR_RS
-	VALUES ("f57fe355-f456-449c-b2f6-734ae394381f",
-	'CreateChangeRequestImpact',
-	'',
-	'',
-	3,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("aadb0141-b089-41fb-9f0c-02b0146fa52e",
-	"b9747524-a416-4a89-a9ef-0062b1f78a12",
-	-1,
-	'CreateChangeRequestImpact',
-	'',
-	'../../../../../ProjectMgmt/models/ProjectMgmt/Interfaces/Projects/Projects.xtuml');
-INSERT INTO SPR_REP
-	VALUES ("8b0ab7fb-0324-4c70-a62a-e9609d587f03",
-	"00053e29-0318-4de9-b625-8bc71d10ede1",
-	"41287efb-8074-47e1-b27d-0fff1ac1b588");
-INSERT INTO SPR_RS
-	VALUES ("8b0ab7fb-0324-4c70-a62a-e9609d587f03",
-	'InitiateChangeRequest',
-	'',
-	'',
-	3,
-	0);
-INSERT INTO C_EP_PROXY
-	VALUES ("00053e29-0318-4de9-b625-8bc71d10ede1",
-	"b9747524-a416-4a89-a9ef-0062b1f78a12",
-	-1,
-	'InitiateChangeRequest',
-	'',
-	'../../../../../ProjectMgmt/models/ProjectMgmt/Interfaces/Projects/Projects.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("b9747524-a416-4a89-a9ef-0062b1f78a12",
 	"00000000-0000-0000-0000-000000000000",

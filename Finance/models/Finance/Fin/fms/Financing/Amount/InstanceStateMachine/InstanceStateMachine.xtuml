@@ -324,7 +324,7 @@ INSERT INTO SM_SEME
 	"49dbb942-3593-426d-9dec-a05add07cf38",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("86a8cf20-7b26-4d06-91cd-0a8ac76805d0",
 	"c9970eef-6c50-4dea-853e-af3004b40543",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
@@ -402,7 +402,7 @@ INSERT INTO SM_SEME
 	"49dbb942-3593-426d-9dec-a05add07cf38",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("21a32b49-bfde-455f-b58d-2bca60879aba",
 	"c9970eef-6c50-4dea-853e-af3004b40543",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
@@ -552,7 +552,7 @@ INSERT INTO SM_SEME
 	"49dbb942-3593-426d-9dec-a05add07cf38",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("2d9bff91-ad91-438c-bde4-96de9e796a5e",
 	"c9970eef-6c50-4dea-853e-af3004b40543",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
@@ -636,7 +636,7 @@ INSERT INTO SM_SEME
 	"49dbb942-3593-426d-9dec-a05add07cf38",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO SM_CH
+INSERT INTO SM_EIGN
 	VALUES ("362f8287-88fc-4cc0-8f55-c977b5c18eb8",
 	"c9970eef-6c50-4dea-853e-af3004b40543",
 	"43946f14-ab0a-4593-b092-77cce9d890e6",
@@ -800,9 +800,6 @@ self->Column[R130.''recorded under'']
 	->Account[R170.''operates''];
 
 relate self to debit across R30.''debits'';
-
-self.Log( EventType:Account::PaymentAssigned );
-
 ',
 	'',
 	0);
@@ -823,8 +820,6 @@ INSERT INTO SM_ACT
 		->Account[R170.''operates''];
 		
 relate self to credit across R50.''credits'';
-
-self.Log( EventType:Account::PaymentApproved );
 ',
 	'',
 	0);
@@ -877,10 +872,7 @@ select one account related by
 self->Account[R30.''debits'']; 
 
 unrelate self from account 
-across R30.''debits'';
-
-self.Log( EventType:Account::DeductionCanceled);
-',
+across R30.''debits'';',
 	'',
 	0);
 INSERT INTO SM_TAH
@@ -932,8 +924,6 @@ if (empty debit)
 	relate self to debit across R240.''is debit transfer'';
 
 end if;
-
-self.Log( EventType:Account::TransferMade );
 ',
 	'',
 	0);
@@ -982,8 +972,6 @@ INSERT INTO SM_ACT
 		->Account[R170.''operates''];
 		
 relate self to credit across R230.''is credit transfer'';
-
-self.Log( EventType:Account::TransferApproved );
 ',
 	'',
 	0);
@@ -1022,9 +1010,7 @@ select one account related by
 self->Account[R240.''is debit transfer'']; 
 
 unrelate self from account 
-across R240.''is debit transfer'';
-
-self.Log( EventType:Account::TransferAborted);',
+across R240.''is debit transfer'';',
 	'',
 	0);
 INSERT INTO SM_TAH
