@@ -1,0 +1,664 @@
+package hrsystem.hr.initialization.impl;
+
+
+import hrsystem.Hr;
+import hrsystem.hr.initialization.PEI;
+import hrsystem.hr.initialization.impl.PEIImpl;
+import hrsystem.hr.main.BonusSpecification;
+import hrsystem.hr.main.Department;
+import hrsystem.hr.main.Employee;
+import hrsystem.hr.main.EmployeeSet;
+import hrsystem.hr.main.Grade;
+import hrsystem.hr.main.Job;
+import hrsystem.hr.main.LeaveSpecification;
+import hrsystem.hr.main.Scale;
+import hrsystem.hr.main.impl.BonusSpecificationImpl;
+import hrsystem.hr.main.impl.DepartmentImpl;
+import hrsystem.hr.main.impl.EmployeeImpl;
+import hrsystem.hr.main.impl.GradeImpl;
+import hrsystem.hr.main.impl.JobImpl;
+import hrsystem.hr.main.impl.LeaveSpecificationImpl;
+import hrsystem.hr.main.impl.ScaleImpl;
+
+import io.ciera.runtime.summit.exceptions.XtumlException;
+import io.ciera.runtime.summit.statemachine.ITransition;
+import io.ciera.runtime.summit.statemachine.StateMachine;
+import io.ciera.runtime.summit.types.StringUtil;
+
+import java.util.Iterator;
+
+
+public class PEIStateMachine extends StateMachine<PEI,Hr> {
+
+    public static final int Accounting = 1;
+    public static final int Bounsing = 2;
+    public static final int Commencing = 3;
+    public static final int Employing = 4;
+    public static final int Initial = 0;
+    public static final int InitialingLeave = 5;
+    public static final int Initialized = 6;
+    public static final int Positioning = 7;
+    public static final int Scaling = 8;
+    public static final int Structuring = 9;
+
+
+    private PEI self;
+
+    public PEIStateMachine(PEI self, Hr context) {
+        this(self, context, Initial);
+    }
+
+    public PEIStateMachine(PEI self, Hr context, int initialState) {
+        super(context, initialState);
+        this.self = self;
+    }
+
+    private void Accounting_entry_action() throws XtumlException {
+        EmployeeSet employees = context().Employee_instances();
+        Employee emp;
+        for ( Iterator<Employee> _emp_iter = employees.elements().iterator(); _emp_iter.hasNext(); ) {
+            emp = _emp_iter.next();
+            context().Authenticate().CreateNewAccount( emp.getFirstName(), emp.getLastName(), emp.getEmployeeID(), emp.getEmail() );
+        }
+        context().generate(new PEIImpl.assignPositions(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+    private void Bounsing_entry_action() throws XtumlException {
+        BonusSpecification bonus = BonusSpecificationImpl.create( context() );
+        bonus.setName("ساعة ونصف خارج دوام");
+        bonus.setPercent(0.15);
+        bonus = BonusSpecificationImpl.create( context() );
+        bonus.setName("بدل ندرة");
+        bonus.setPercent(0.3);
+        bonus = BonusSpecificationImpl.create( context() );
+        bonus.setName("بدل حاسب");
+        bonus.setPercent(0.25);
+        bonus = BonusSpecificationImpl.create( context() );
+        bonus.setName("بدل بحث علمي");
+        bonus.setPercent(0.4);
+        context().generate(new PEIImpl.commence(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+    private void Commencing_entry_action() throws XtumlException {
+        EmployeeSet employees = context().Employee_instances();
+        Employee employee;
+        for ( Iterator<Employee> _employee_iter = employees.elements().iterator(); _employee_iter.hasNext(); ) {
+            employee = _employee_iter.next();
+            context().generate(new EmployeeImpl.commenced(getRunContext(), context().getId()).to(employee));
+            employee.setStart_Date(context().TIM().current_seconds());
+            employee.setSickLeaveBalance(5);
+            employee.setLeaveBalance(35);
+        }
+        context().generate(new PEIImpl.createAccounts(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+    private void Employing_entry_action() throws XtumlException {
+        Employee emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1420000);
+        emp.setNationalID(1041000000);
+        emp.setFirstName("خالد");
+        emp.setMiddleName("عبدالعزيز");
+        emp.setLastName("الراجح");
+        emp.setEmail("K.Alrajeh@kacst.edu.sa");
+        emp.setOfficePhone("4815553");
+        emp.setDateOfBirth(19691034);
+        emp.setDegree("Mcs");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  1, "إدارة الموارد البشرية" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1421111);
+        emp.setNationalID(1041000001);
+        emp.setFirstName("سعد");
+        emp.setMiddleName("عبدالله");
+        emp.setLastName("العساف");
+        emp.setEmail("S.Alassaf@kacst.edu.sa");
+        emp.setOfficePhone("4811113");
+        emp.setDateOfBirth(19691034);
+        emp.setDegree("Mcs");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  2, "إدارة الموارد البشرية" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1422222);
+        emp.setNationalID(1041000002);
+        emp.setFirstName("سعود");
+        emp.setMiddleName("عبدالله");
+        emp.setLastName("المانع");
+        emp.setEmail("S.Almanea@kacst.edu.sa");
+        emp.setOfficePhone("4812223");
+        emp.setDateOfBirth(19691034);
+        emp.setDegree("Mcs");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  3, "إدارة الموارد البشرية" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1423333);
+        emp.setNationalID(1041000003);
+        emp.setFirstName("خالد");
+        emp.setMiddleName("عبدالعزيز");
+        emp.setLastName("الفالح");
+        emp.setEmail("K.Alfaleh@kacst.edu.sa");
+        emp.setOfficePhone("4815553");
+        emp.setDateOfBirth(19691034);
+        emp.setDegree("Mcs");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  4, "مكتب الرئيس" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1424444);
+        emp.setNationalID(1041000004);
+        emp.setFirstName("سعود");
+        emp.setMiddleName("عبدالله");
+        emp.setLastName("أبا الخيل");
+        emp.setEmail("S.AbaAlkhail@kacst.edu.sa");
+        emp.setOfficePhone("4816663");
+        emp.setDateOfBirth(19781012);
+        emp.setDegree("PhD");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  5, "نائب الرئيس للخدمات المساندة" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1425555);
+        emp.setNationalID(1041000005);
+        emp.setFirstName("صالح");
+        emp.setMiddleName("فهد");
+        emp.setLastName("العتيبي");
+        emp.setEmail("saleh@kacst.edu.sa");
+        emp.setOfficePhone("4531");
+        emp.setDateOfBirth(19811034);
+        emp.setDegree("Bsc");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  6, "المالية" ).to(emp));
+        context().Authenticate().AddToGroup( emp.getEmployeeID(), "Fin" );
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1426666);
+        emp.setNationalID(1041000006);
+        emp.setFirstName("John");
+        emp.setMiddleName("R");
+        emp.setLastName("Wolf");
+        emp.setEmail("jrw@kacst.edu.sa");
+        emp.setOfficePhone("4441");
+        emp.setDateOfBirth(19821034);
+        emp.setDegree("Bsc");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  7, "المالية" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1427777);
+        emp.setNationalID(1041000007);
+        emp.setFirstName("Alasdar");
+        emp.setMiddleName("A");
+        emp.setLastName("Mullarney");
+        emp.setEmail("Alasdar@kacst.edu.sa");
+        emp.setOfficePhone("4221");
+        emp.setDateOfBirth(19831034);
+        emp.setDegree("Bsc");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  8, "المالية" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1428888);
+        emp.setNationalID(1041000008);
+        emp.setFirstName("عبدالله");
+        emp.setMiddleName("سعود");
+        emp.setLastName("السبيعي");
+        emp.setEmail("aaslubaie@kacst.edu.sa");
+        emp.setOfficePhone("4391");
+        emp.setDateOfBirth(19841034);
+        emp.setDegree("PhD");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  9, "نائب الرئيس للخدمات المساندة" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1429999);
+        emp.setNationalID(1041000009);
+        emp.setFirstName("سارة");
+        emp.setMiddleName("عبدالله");
+        emp.setLastName("العمير");
+        emp.setEmail("S.Alameer@kacst.edu.sa");
+        emp.setOfficePhone("4301");
+        emp.setDateOfBirth(19861034);
+        emp.setDegree("Bsc");
+        emp.setGender("Female");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  10, "نائب الرئيس للخدمات المساندة" ).to(emp));
+        emp = EmployeeImpl.create( context() );
+        emp.setEmployeeID(1430000);
+        emp.setNationalID(1041000010);
+        emp.setFirstName("أحمد");
+        emp.setMiddleName("زياد");
+        emp.setLastName("آل الشيخ");
+        emp.setEmail("A.Alshaikh@kacst.edu.sa");
+        emp.setOfficePhone("4814001");
+        emp.setDateOfBirth(20200318);
+        emp.setDegree("Bsc");
+        emp.setGender("Male");
+        context().generate(new EmployeeImpl.Recruited(getRunContext(), context().getId(),  11, "مكتب الرئيس" ).to(emp));
+        context().generate(new PEIImpl.createBonuses(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+    private void Initial_entry_action() throws XtumlException {
+    }
+
+    private void InitialingLeave_entry_action() throws XtumlException {
+        LeaveSpecification leaveSpecification = LeaveSpecificationImpl.create( context() );
+        leaveSpecification.setName("إجازة اعتيادية");
+        leaveSpecification.setMaximumDays(105);
+        leaveSpecification.setMinimumDays(5);
+        leaveSpecification = LeaveSpecificationImpl.create( context() );
+        leaveSpecification.setName("إجازة مرضية");
+        leaveSpecification.setMaximumDays(5);
+        leaveSpecification.setMinimumDays(1);
+        leaveSpecification = LeaveSpecificationImpl.create( context() );
+        leaveSpecification.setName("إجازة استثنائية");
+        leaveSpecification.setMaximumDays(365);
+        leaveSpecification.setMinimumDays(180);
+        context().generate(new PEIImpl.createScale(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+    private void Initialized_entry_action() throws XtumlException {
+        context().UI().InitializeComplete();
+    }
+
+    private void Positioning_entry_action() throws XtumlException {
+        Department dep = context().Department_instances().anyWhere(selected -> StringUtil.equality(((Department)selected).getName(), "إدارة الموارد البشرية"));
+        dep.assignManagerRole( 1422222 );
+        context().Authenticate().AddToGroup( 1422222, "Managers" );
+        context().Authenticate().AddToGroup( 1422222, "HR" );
+        dep = context().Department_instances().anyWhere(selected -> StringUtil.equality(((Department)selected).getName(), "المالية"));
+        dep.assignManagerRole( 1427777 );
+        context().Authenticate().AddToGroup( 1427777, "Managers" );
+        dep = context().Department_instances().anyWhere(selected -> StringUtil.equality(((Department)selected).getName(), "نائب الرئيس للخدمات المساندة"));
+        dep.assignManagerRole( 1424444 );
+        context().Authenticate().AddToGroup( 1424444, "Managers" );
+        dep = context().Department_instances().anyWhere(selected -> StringUtil.equality(((Department)selected).getName(), "مكتب الرئيس"));
+        dep.assignManagerRole( 1423333 );
+        context().Authenticate().AddToGroup( 1423333, "Managers" );
+    }
+
+    private void Scaling_entry_action() throws XtumlException {
+        Scale scale = ScaleImpl.create( context() );
+        scale.setName("السلم العام");
+        scale.setDescription("السلم العام حسب نظام الخدمة المدنية");
+        Grade grade = GradeImpl.create( context() );
+        grade.setName("1");
+        grade.setNumberOfSteps(15);
+        grade.setBaseSalary(3000);
+        grade.setAllowance(135);
+        context().relate_R12_Grade_is_part_of_Scale( grade, scale );
+        Grade grade2 = GradeImpl.create( context() );
+        grade2.setName("2");
+        grade2.setNumberOfSteps(15);
+        grade2.setBaseSalary(3430);
+        grade2.setAllowance(165);
+        context().relate_R12_Grade_is_part_of_Scale( grade2, scale );
+        context().relate_R14_Grade_above_Grade( grade, grade2 );
+        Grade grade3 = GradeImpl.create( context() );
+        grade3.setName("3");
+        grade3.setNumberOfSteps(15);
+        grade3.setBaseSalary(3945);
+        grade3.setAllowance(190);
+        context().relate_R12_Grade_is_part_of_Scale( grade3, scale );
+        context().relate_R14_Grade_above_Grade( grade2, grade3 );
+        Grade grade4 = GradeImpl.create( context() );
+        grade4.setName("4");
+        grade4.setNumberOfSteps(15);
+        grade4.setBaseSalary(4530);
+        grade4.setAllowance(230);
+        context().relate_R12_Grade_is_part_of_Scale( grade4, scale );
+        context().relate_R14_Grade_above_Grade( grade3, grade4 );
+        Grade grade5 = GradeImpl.create( context() );
+        grade5.setName("5");
+        grade5.setNumberOfSteps(15);
+        grade5.setBaseSalary(5240);
+        grade5.setAllowance(265);
+        context().relate_R12_Grade_is_part_of_Scale( grade5, scale );
+        context().relate_R14_Grade_above_Grade( grade4, grade5 );
+        Grade grade6 = GradeImpl.create( context() );
+        grade6.setName("6");
+        grade6.setNumberOfSteps(15);
+        grade6.setBaseSalary(6065);
+        grade6.setAllowance(305);
+        context().relate_R12_Grade_is_part_of_Scale( grade6, scale );
+        context().relate_R14_Grade_above_Grade( grade5, grade6 );
+        Grade grade7 = GradeImpl.create( context() );
+        grade7.setName("7");
+        grade7.setNumberOfSteps(15);
+        grade7.setBaseSalary(7010);
+        grade7.setAllowance(365);
+        context().relate_R12_Grade_is_part_of_Scale( grade7, scale );
+        context().relate_R14_Grade_above_Grade( grade6, grade7 );
+        Grade grade8 = GradeImpl.create( context() );
+        grade8.setName("8");
+        grade8.setNumberOfSteps(15);
+        grade8.setBaseSalary(8010);
+        grade8.setAllowance(415);
+        context().relate_R12_Grade_is_part_of_Scale( grade8, scale );
+        context().relate_R14_Grade_above_Grade( grade7, grade8 );
+        Grade grade9 = GradeImpl.create( context() );
+        grade9.setName("9");
+        grade9.setNumberOfSteps(15);
+        grade9.setBaseSalary(9275);
+        grade9.setAllowance(470);
+        context().relate_R12_Grade_is_part_of_Scale( grade9, scale );
+        context().relate_R14_Grade_above_Grade( grade8, grade9 );
+        Grade grade10 = GradeImpl.create( context() );
+        grade10.setName("10");
+        grade10.setNumberOfSteps(15);
+        grade10.setBaseSalary(10275);
+        grade10.setAllowance(510);
+        context().relate_R12_Grade_is_part_of_Scale( grade10, scale );
+        context().relate_R14_Grade_above_Grade( grade9, grade10 );
+        Grade grade11 = GradeImpl.create( context() );
+        grade11.setName("11");
+        grade11.setNumberOfSteps(14);
+        grade11.setBaseSalary(11815);
+        grade11.setAllowance(530);
+        context().relate_R12_Grade_is_part_of_Scale( grade11, scale );
+        context().relate_R14_Grade_above_Grade( grade10, grade11 );
+        Grade grade12 = GradeImpl.create( context() );
+        grade12.setName("12");
+        grade12.setNumberOfSteps(13);
+        grade12.setBaseSalary(13435);
+        grade12.setAllowance(570);
+        context().relate_R12_Grade_is_part_of_Scale( grade12, scale );
+        context().relate_R14_Grade_above_Grade( grade11, grade12 );
+        Grade grade13 = GradeImpl.create( context() );
+        grade13.setName("13");
+        grade13.setNumberOfSteps(12);
+        grade13.setBaseSalary(15180);
+        grade13.setAllowance(605);
+        context().relate_R12_Grade_is_part_of_Scale( grade13, scale );
+        context().relate_R14_Grade_above_Grade( grade12, grade13 );
+        Grade grade14 = GradeImpl.create( context() );
+        grade14.setName("14");
+        grade14.setNumberOfSteps(11);
+        grade14.setBaseSalary(17015);
+        grade14.setAllowance(700);
+        context().relate_R12_Grade_is_part_of_Scale( grade14, scale );
+        context().relate_R14_Grade_above_Grade( grade13, grade14 );
+        Grade grade15 = GradeImpl.create( context() );
+        grade15.setName("15");
+        grade15.setNumberOfSteps(10);
+        grade15.setBaseSalary(20855);
+        grade15.setAllowance(865);
+        context().relate_R12_Grade_is_part_of_Scale( grade15, scale );
+        context().relate_R14_Grade_above_Grade( grade14, grade15 );
+        Job job = JobImpl.create( context() );
+        job.setJob_ID(1);
+        job.setTitle("مهندس برمجيات أول واجهات المستخدم");
+        job.setDescription("تطوير واجهات المستخدمين");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(2);
+        job.setTitle("مهندس برمجيات أول البنية التحتية");
+        job.setDescription("تطوير حلول أنظمة البنية التحتية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(3);
+        job.setTitle("مهندس برمجيات");
+        job.setDescription("تطوير حلول أنظمة الموارد المؤسسية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "10"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(4);
+        job.setTitle("مختص موارد بشرية");
+        job.setDescription("التوظيف وتقييم الموظفين");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "9"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(5);
+        job.setTitle("كبير مهندسي برمجيات");
+        job.setDescription("الإشراف على فرق هندسة البرمجيات");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "12"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(6);
+        job.setTitle("مدير مالية");
+        job.setDescription("إدارة الشؤون المالية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "14"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(7);
+        job.setTitle("مدير مسيرات");
+        job.setDescription("إدارة الرواتب ومراجعتها");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "10"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(8);
+        job.setTitle("مدير ميزانية");
+        job.setDescription("إدارة الميزانية السنوية وصرف المستحقات وإدارة التدفقات النقدية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "10"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(9);
+        job.setTitle("الرئيس");
+        job.setDescription("يرأس جهاز المؤسسة");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "15"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(10);
+        job.setTitle("خبير موارد بشرية");
+        job.setDescription("محلل بيانات موارد بشرية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "9"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(11);
+        job.setTitle("مختص موارد بشرية");
+        job.setDescription("يعمل لإدارة شئون الموظفين");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(12);
+        job.setTitle("مختص موارد بشرية");
+        job.setDescription("يعمل لإدارة شئون الموظفين");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(13);
+        job.setTitle("مختص موارد بشرية");
+        job.setDescription("يعمل لإدارة شئون الموظفين");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(14);
+        job.setTitle("مختص موارد بشرية");
+        job.setDescription("يعمل لإدارة شئون الموظفين");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(15);
+        job.setTitle("مختص مالية");
+        job.setDescription("إدارة الشؤون المالية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        job = JobImpl.create( context() );
+        job.setJob_ID(16);
+        job.setTitle("مختص مالية");
+        job.setDescription("إدارة الشؤون المالية");
+        job.setPensionDeduction(0.09);
+        grade = context().Grade_instances().anyWhere(selected -> StringUtil.equality(((Grade)selected).getName(), "8"));
+        context().relate_R9_Job_assigned_Grade( job, grade );
+        context().generate(new PEIImpl.createDepartments(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+    private void Structuring_entry_action() throws XtumlException {
+        Department departmentIT = DepartmentImpl.create( context() );
+        departmentIT.setName("تقنية المعلومات");
+        departmentIT.setMission("إدارة الخدمات الالكترونية");
+        Department departmentHR = DepartmentImpl.create( context() );
+        departmentHR.setName("إدارة الموارد البشرية");
+        departmentHR.setMission("تتولى إدارة شئون الموظفين بما في ذلك التدريب والتقويم السنوي");
+        Department departmentFin = DepartmentImpl.create( context() );
+        departmentFin.setName("المالية");
+        departmentFin.setMission("إدارة ميزانية المؤسسة وما يحلق بذلك من مهام إدارة التدفقات النقدية والإنفاق على التكاليف التشغيلية");
+        Department vpServices = DepartmentImpl.create( context() );
+        vpServices.setName("نائب الرئيس للخدمات المساندة");
+        vpServices.setMission("إدارة الخدمات المساندة");
+        context().relate_R22_Department_is_part_of_Department( vpServices, departmentIT );
+        context().relate_R22_Department_is_part_of_Department( vpServices, departmentHR );
+        context().relate_R22_Department_is_part_of_Department( vpServices, departmentFin );
+        Department President = DepartmentImpl.create( context() );
+        President.setName("مكتب الرئيس");
+        President.setMission("إدارة أعمال الرئيس داخل المؤسسة وخارجها ");
+        context().relate_R22_Department_is_part_of_Department( President, vpServices );
+        context().generate(new PEIImpl.employ(getRunContext(), context().getId()).toSelf(self()));
+    }
+
+
+
+    private void Accounting_assignPositions_txn_to_Positioning_action() throws XtumlException {
+    }
+
+    private void Bounsing_commence_txn_to_Commencing_action() throws XtumlException {
+    }
+
+    private void Commencing_createAccounts_txn_to_Accounting_action() throws XtumlException {
+    }
+
+    private void Employing_createBonuses_txn_to_Bounsing_action() throws XtumlException {
+    }
+
+    private void Initial_createLeave_txn_to_InitialingLeave_action() throws XtumlException {
+    }
+
+    private void InitialingLeave_createScale_txn_to_Scaling_action() throws XtumlException {
+    }
+
+    private void Positioning_completed_txn_to_Initialized_action() throws XtumlException {
+    }
+
+    private void Scaling_createDepartments_txn_to_Structuring_action() throws XtumlException {
+    }
+
+    private void Structuring_employ_txn_to_Employing_action() throws XtumlException {
+    }
+
+
+
+    @Override
+    public ITransition[][] getStateEventMatrix() {
+        return new ITransition[][] {
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {Initial_createLeave_txn_to_InitialingLeave_action();InitialingLeave_entry_action();return InitialingLeave;},
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { (event) -> {Accounting_assignPositions_txn_to_Positioning_action();Positioning_entry_action();return Positioning;},
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {Bounsing_commence_txn_to_Commencing_action();Commencing_entry_action();return Commencing;}
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {Commencing_createAccounts_txn_to_Accounting_action();Accounting_entry_action();return Accounting;},
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {Employing_createBonuses_txn_to_Bounsing_action();Bounsing_entry_action();return Bounsing;},
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {InitialingLeave_createScale_txn_to_Scaling_action();Scaling_entry_action();return Scaling;},
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {Positioning_completed_txn_to_Initialized_action();Initialized_entry_action();return Initialized;},
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              (event) -> {Scaling_createDepartments_txn_to_Structuring_action();Structuring_entry_action();return Structuring;},
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            },
+            { CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              CANT_HAPPEN,
+              (event) -> {Structuring_employ_txn_to_Employing_action();Employing_entry_action();return Employing;},
+              CANT_HAPPEN,
+              CANT_HAPPEN
+            }
+        };
+    }
+
+    @Override
+    public PEI self() {
+        return self;
+    }
+
+    @Override
+    public String getClassName() {
+        return "PEI";
+    }
+
+}
