@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
 
+import sharedtypes.AccountEvents;
 import sharedtypes.Payitem;
 import sharedtypes.Paytype;
 import sharedtypes.Transaction;
@@ -37,8 +38,8 @@ public class UI extends Component<UI> {
         super(app, runContext, populationId);
 
 
-        LOG = null;
         TIM = null;
+        LOG = null;
         classDirectory = new TreeMap<>();
 
     }
@@ -66,6 +67,9 @@ public class UI extends Component<UI> {
     }
 
     public void SendAccountFunds( final String p_Code,  final String p_Name,  final boolean p_New,  final int p_Ceiling,  final int p_Requested,  final int p_CeilingRevenue,  final int p_RequestedRevenue ) throws XtumlException {
+    }
+
+    public void SendAccountLogs( final String p_Code,  final String p_Name,  final AccountEvents p_Action ) throws XtumlException {
     }
 
     public void SendBonusList( final String p_Name,  final double p_Percent ) throws XtumlException {
@@ -311,15 +315,15 @@ public class UI extends Component<UI> {
 
 
     // utilities
-    private LOG LOG;
-    public LOG LOG() {
-        if ( null == LOG ) LOG = new LOGImpl<>( this );
-        return LOG;
-    }
     private TIM TIM;
     public TIM TIM() {
         if ( null == TIM ) TIM = new TIMImpl<>( this );
         return TIM;
+    }
+    private LOG LOG;
+    public LOG LOG() {
+        if ( null == LOG ) LOG = new LOGImpl<>( this );
+        return LOG;
     }
 
 

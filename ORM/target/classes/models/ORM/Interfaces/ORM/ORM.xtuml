@@ -1,0 +1,491 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("4b813629-fe71-4501-8e05-e1088b5edfea",
+	"00000000-0000-0000-0000-000000000000",
+	'ORM',
+	'');
+INSERT INTO C_EP
+	VALUES ("14521c71-bdea-4743-898d-cbf73168bc5e",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'CreateClass',
+	'');
+INSERT INTO C_AS
+	VALUES ("14521c71-bdea-4743-898d-cbf73168bc5e",
+	'CreateClass',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("209d9c20-7a2e-4af2-808d-54edfca27af5",
+	"14521c71-bdea-4743-898d-cbf73168bc5e",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("96d3a055-66c3-4669-9b9c-8378242831ee",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'LogAccount',
+	'');
+INSERT INTO C_AS
+	VALUES ("96d3a055-66c3-4669-9b9c-8378242831ee",
+	'LogAccount',
+	'',
+	0,
+	"14521c71-bdea-4743-898d-cbf73168bc5e");
+INSERT INTO C_PP
+	VALUES ("044842d1-fd02-4dab-92fe-52bb515f70c1",
+	"96d3a055-66c3-4669-9b9c-8378242831ee",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Code',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("7110d15c-84f5-45fe-aefa-6b02c54acacf",
+	"96d3a055-66c3-4669-9b9c-8378242831ee",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Name',
+	'',
+	0,
+	'',
+	"044842d1-fd02-4dab-92fe-52bb515f70c1");
+INSERT INTO C_PP
+	VALUES ("8fe01a51-9363-45c3-af5c-28d75430a4fa",
+	"96d3a055-66c3-4669-9b9c-8378242831ee",
+	"ff7466eb-0aff-45d9-bc48-3f240d210f84",
+	'Action',
+	'',
+	0,
+	'',
+	"7110d15c-84f5-45fe-aefa-6b02c54acacf");
+INSERT INTO S_DT_PROXY
+	VALUES ("ff7466eb-0aff-45d9-bc48-3f240d210f84",
+	"00000000-0000-0000-0000-000000000000",
+	'AccountEvents',
+	'',
+	'',
+	'../../../../../Finance/models/Finance/SharedTypes/SharedTypes.xtuml');
+INSERT INTO C_EP
+	VALUES ("157629d1-ea81-4fc3-8266-1380c6e7870b",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'ReadAccountsLog',
+	'');
+INSERT INTO C_AS
+	VALUES ("157629d1-ea81-4fc3-8266-1380c6e7870b",
+	'ReadAccountsLog',
+	'',
+	0,
+	"96d3a055-66c3-4669-9b9c-8378242831ee");
+INSERT INTO C_EP
+	VALUES ("8bdf0c2f-2922-4923-ba7f-922405e84704",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'SendAccountsLog',
+	'');
+INSERT INTO C_AS
+	VALUES ("8bdf0c2f-2922-4923-ba7f-922405e84704",
+	'SendAccountsLog',
+	'',
+	1,
+	"157629d1-ea81-4fc3-8266-1380c6e7870b");
+INSERT INTO C_EP
+	VALUES ("19f759b0-bb91-4d73-ba1b-b113ac493d8c",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'AddAttributes',
+	'');
+INSERT INTO C_AS
+	VALUES ("19f759b0-bb91-4d73-ba1b-b113ac493d8c",
+	'AddAttributes',
+	'',
+	0,
+	"8bdf0c2f-2922-4923-ba7f-922405e84704");
+INSERT INTO C_PP
+	VALUES ("3a2612b2-51ce-457d-ad4b-17eb2649d14d",
+	"19f759b0-bb91-4d73-ba1b-b113ac493d8c",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("3c93e140-ba16-4011-afb6-389b96671bdc",
+	"19f759b0-bb91-4d73-ba1b-b113ac493d8c",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'AttributeName',
+	'',
+	0,
+	'',
+	"3a2612b2-51ce-457d-ad4b-17eb2649d14d");
+INSERT INTO C_PP
+	VALUES ("2183c632-1673-4e34-aafc-ac0fcd242c2d",
+	"19f759b0-bb91-4d73-ba1b-b113ac493d8c",
+	"4c142076-0c50-42d9-b6a5-fcc04b73d85b",
+	'ORMType',
+	'',
+	0,
+	'',
+	"3c93e140-ba16-4011-afb6-389b96671bdc");
+INSERT INTO S_DT_PROXY
+	VALUES ("4c142076-0c50-42d9-b6a5-fcc04b73d85b",
+	"00000000-0000-0000-0000-000000000000",
+	'Types',
+	'',
+	'',
+	'../../SharedTypes/SharedTypes.xtuml');
+INSERT INTO C_EP
+	VALUES ("4281f0f0-bd32-44c7-9a66-b4b42ec03374",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'CreateInstance',
+	'');
+INSERT INTO C_AS
+	VALUES ("4281f0f0-bd32-44c7-9a66-b4b42ec03374",
+	'CreateInstance',
+	'',
+	0,
+	"19f759b0-bb91-4d73-ba1b-b113ac493d8c");
+INSERT INTO C_PP
+	VALUES ("04896302-2a32-4667-9a7a-5310d9b00c11",
+	"4281f0f0-bd32-44c7-9a66-b4b42ec03374",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("73c1a88d-c525-44f8-8b80-a1b26cfd26da",
+	"4281f0f0-bd32-44c7-9a66-b4b42ec03374",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'InstanceName',
+	'',
+	0,
+	'',
+	"04896302-2a32-4667-9a7a-5310d9b00c11");
+INSERT INTO C_EP
+	VALUES ("29b00879-31ff-4de8-83b3-3b16f1aaa797",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'AddInstanceAttributes',
+	'');
+INSERT INTO C_AS
+	VALUES ("29b00879-31ff-4de8-83b3-3b16f1aaa797",
+	'AddInstanceAttributes',
+	'',
+	0,
+	"4281f0f0-bd32-44c7-9a66-b4b42ec03374");
+INSERT INTO C_PP
+	VALUES ("375244b6-1606-417d-b22d-04791b2419b4",
+	"29b00879-31ff-4de8-83b3-3b16f1aaa797",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("3123ca4f-7424-42ff-8d5c-ddd4373325b9",
+	"29b00879-31ff-4de8-83b3-3b16f1aaa797",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'InstanceName',
+	'',
+	0,
+	'',
+	"375244b6-1606-417d-b22d-04791b2419b4");
+INSERT INTO C_PP
+	VALUES ("0fbfb8b1-e5bb-4b62-b108-1ac75c15744d",
+	"29b00879-31ff-4de8-83b3-3b16f1aaa797",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'AttributeName',
+	'',
+	0,
+	'',
+	"3123ca4f-7424-42ff-8d5c-ddd4373325b9");
+INSERT INTO C_PP
+	VALUES ("36e7805f-3d86-4f9a-8ce0-403d969baa7b",
+	"29b00879-31ff-4de8-83b3-3b16f1aaa797",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'AttributeValue',
+	'',
+	0,
+	'',
+	"0fbfb8b1-e5bb-4b62-b108-1ac75c15744d");
+INSERT INTO C_EP
+	VALUES ("bc1ffaed-c6b6-422e-9a12-0d468c0c2d24",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'ReadInstances',
+	'');
+INSERT INTO C_AS
+	VALUES ("bc1ffaed-c6b6-422e-9a12-0d468c0c2d24",
+	'ReadInstances',
+	'',
+	0,
+	"29b00879-31ff-4de8-83b3-3b16f1aaa797");
+INSERT INTO C_PP
+	VALUES ("1c3a495b-da8a-4ef7-abaa-bf0aa49c6e13",
+	"bc1ffaed-c6b6-422e-9a12-0d468c0c2d24",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'RelateInstances',
+	'');
+INSERT INTO C_AS
+	VALUES ("4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	'RelateInstances',
+	'',
+	0,
+	"bc1ffaed-c6b6-422e-9a12-0d468c0c2d24");
+INSERT INTO C_PP
+	VALUES ("b100dd5b-29b3-49fe-9e4d-340cf1914c65",
+	"4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassNameA',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("f8083e23-0b43-425b-bff0-c025aa8d2f82",
+	"4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassNameB',
+	'',
+	0,
+	'',
+	"b100dd5b-29b3-49fe-9e4d-340cf1914c65");
+INSERT INTO C_PP
+	VALUES ("e0914b44-b574-4ce8-8330-925a3a7b6e7f",
+	"4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'RelationshipName',
+	'',
+	0,
+	'',
+	"f8083e23-0b43-425b-bff0-c025aa8d2f82");
+INSERT INTO C_PP
+	VALUES ("1ca5bed6-f30a-411c-ad1c-217f89a3a5a3",
+	"4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'InstanceKeyA',
+	'',
+	0,
+	'',
+	"e0914b44-b574-4ce8-8330-925a3a7b6e7f");
+INSERT INTO C_PP
+	VALUES ("350feee4-4be8-46a6-9bf7-61abf04df9f1",
+	"4ce2a2a0-aecd-418f-b463-7b017262ea3e",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'InstanceKeyB',
+	'',
+	0,
+	'',
+	"1ca5bed6-f30a-411c-ad1c-217f89a3a5a3");
+INSERT INTO C_EP
+	VALUES ("bc229101-ab1c-49a9-bb09-9df267ca5365",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'RelateClasses',
+	'');
+INSERT INTO C_AS
+	VALUES ("bc229101-ab1c-49a9-bb09-9df267ca5365",
+	'RelateClasses',
+	'',
+	0,
+	"4ce2a2a0-aecd-418f-b463-7b017262ea3e");
+INSERT INTO C_PP
+	VALUES ("320971b5-cf10-4085-987a-71516c2f1774",
+	"bc229101-ab1c-49a9-bb09-9df267ca5365",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassNameA',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("da9ec3ef-07fb-4cd4-878b-34b871d64e7a",
+	"bc229101-ab1c-49a9-bb09-9df267ca5365",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassNameB',
+	'',
+	0,
+	'',
+	"320971b5-cf10-4085-987a-71516c2f1774");
+INSERT INTO C_PP
+	VALUES ("d92afff9-eaa8-4a6a-aeee-5beec12e9b7b",
+	"bc229101-ab1c-49a9-bb09-9df267ca5365",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'RelationshipName',
+	'',
+	0,
+	'',
+	"da9ec3ef-07fb-4cd4-878b-34b871d64e7a");
+INSERT INTO C_EP
+	VALUES ("51d33072-0e9a-4119-9de3-2da59abdc4de",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'ReadAssociations',
+	'');
+INSERT INTO C_AS
+	VALUES ("51d33072-0e9a-4119-9de3-2da59abdc4de",
+	'ReadAssociations',
+	'',
+	0,
+	"bc229101-ab1c-49a9-bb09-9df267ca5365");
+INSERT INTO C_PP
+	VALUES ("21ea6943-4bc9-4fd0-af23-e3c380cf1321",
+	"51d33072-0e9a-4119-9de3-2da59abdc4de",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("6b525dcd-3faa-479b-8828-d3fb4aaa18aa",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'SendAssociations',
+	'');
+INSERT INTO C_AS
+	VALUES ("6b525dcd-3faa-479b-8828-d3fb4aaa18aa",
+	'SendAssociations',
+	'',
+	1,
+	"51d33072-0e9a-4119-9de3-2da59abdc4de");
+INSERT INTO C_PP
+	VALUES ("850e6b93-2d14-4a66-9147-46945a4b7f16",
+	"6b525dcd-3faa-479b-8828-d3fb4aaa18aa",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'RelationshipName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("1abb6fac-dbad-4569-a17b-55c4ed85b691",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'SendInstances',
+	'');
+INSERT INTO C_AS
+	VALUES ("1abb6fac-dbad-4569-a17b-55c4ed85b691",
+	'SendInstances',
+	'',
+	1,
+	"6b525dcd-3faa-479b-8828-d3fb4aaa18aa");
+INSERT INTO C_PP
+	VALUES ("783db1d2-a3a6-4348-ad49-5d5255d4d63a",
+	"1abb6fac-dbad-4569-a17b-55c4ed85b691",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassName',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("fe718276-6aa7-4cd3-98ba-c002fb1c2a8f",
+	"1abb6fac-dbad-4569-a17b-55c4ed85b691",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'AttributeName',
+	'',
+	0,
+	'',
+	"783db1d2-a3a6-4348-ad49-5d5255d4d63a");
+INSERT INTO C_PP
+	VALUES ("0cb48c0e-5526-44bd-8e41-841e51d9e669",
+	"1abb6fac-dbad-4569-a17b-55c4ed85b691",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'AttributeValue',
+	'',
+	0,
+	'',
+	"fe718276-6aa7-4cd3-98ba-c002fb1c2a8f");
+INSERT INTO C_EP
+	VALUES ("afbe6417-f184-48a5-ab98-b5e6aa424109",
+	"4b813629-fe71-4501-8e05-e1088b5edfea",
+	-1,
+	'UnrelateInstances',
+	'');
+INSERT INTO C_AS
+	VALUES ("afbe6417-f184-48a5-ab98-b5e6aa424109",
+	'UnrelateInstances',
+	'',
+	0,
+	"1abb6fac-dbad-4569-a17b-55c4ed85b691");
+INSERT INTO C_PP
+	VALUES ("30b82279-4cfa-4bbd-8bb4-2a7bd7e7862e",
+	"afbe6417-f184-48a5-ab98-b5e6aa424109",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassNameA',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("e9647bdd-53cc-4bda-a6c4-4234bb055823",
+	"afbe6417-f184-48a5-ab98-b5e6aa424109",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'ClassNameB',
+	'',
+	0,
+	'',
+	"30b82279-4cfa-4bbd-8bb4-2a7bd7e7862e");
+INSERT INTO C_PP
+	VALUES ("08899cdf-9cd9-4ac4-a9f8-d91d63010b22",
+	"afbe6417-f184-48a5-ab98-b5e6aa424109",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'RelationshipName',
+	'',
+	0,
+	'',
+	"e9647bdd-53cc-4bda-a6c4-4234bb055823");
+INSERT INTO C_PP
+	VALUES ("7df9d88a-8c70-4bde-a52b-dfbd8b14b8f9",
+	"afbe6417-f184-48a5-ab98-b5e6aa424109",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'InstanceKeyA',
+	'',
+	0,
+	'',
+	"08899cdf-9cd9-4ac4-a9f8-d91d63010b22");
+INSERT INTO C_PP
+	VALUES ("df545696-67b7-4aca-8f3f-0ddae47d6030",
+	"afbe6417-f184-48a5-ab98-b5e6aa424109",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'InstanceKeyB',
+	'',
+	0,
+	'',
+	"7df9d88a-8c70-4bde-a52b-dfbd8b14b8f9");
+INSERT INTO PE_PE
+	VALUES ("4b813629-fe71-4501-8e05-e1088b5edfea",
+	1,
+	"f32b54b8-0d7c-4fb5-b8dd-79513e3a6b90",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f32b54b8-0d7c-4fb5-b8dd-79513e3a6b90",
+	"2e3c5044-40f2-41f3-9b7a-16330a901e3c",
+	"2e3c5044-40f2-41f3-9b7a-16330a901e3c",
+	'Interfaces',
+	'',
+	0,
+	'../Interfaces.xtuml');

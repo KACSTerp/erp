@@ -1,0 +1,128 @@
+package hrsystem.dbs;
+
+
+import hrsystem.Dbs;
+
+import interfaces.IORM;
+
+import io.ciera.runtime.summit.exceptions.BadArgumentException;
+import io.ciera.runtime.summit.exceptions.XtumlException;
+import io.ciera.runtime.summit.interfaces.IMessage;
+import io.ciera.runtime.summit.interfaces.IPort;
+import io.ciera.runtime.summit.interfaces.Port;
+import io.ciera.runtime.summit.types.StringUtil;
+
+import sharedtypes.AccountEvents;
+import sharedtypes.Types;
+
+
+public class DbsORM extends Port<Dbs> implements IORM {
+
+    public DbsORM( Dbs context, IPort<?> peer ) {
+        super( context, peer );
+    }
+
+    // inbound messages
+    public void ReadInstances( final String p_ClassName ) throws XtumlException {
+    }
+
+    public void ReadAssociations( final String p_ClassName ) throws XtumlException {
+    }
+
+    public void ReadAccountsLog() throws XtumlException {
+    }
+
+    public void UnrelateInstances( final String p_ClassNameA,  final String p_ClassNameB,  final String p_RelationshipName,  final String p_InstanceKeyA,  final String p_InstanceKeyB ) throws XtumlException {
+    }
+
+    public void LogAccount( final String p_Code,  final String p_Name,  final AccountEvents p_Action ) throws XtumlException {
+    }
+
+    public void RelateInstances( final String p_ClassNameA,  final String p_ClassNameB,  final String p_RelationshipName,  final String p_InstanceKeyA,  final String p_InstanceKeyB ) throws XtumlException {
+    }
+
+    public void RelateClasses( final String p_ClassNameA,  final String p_ClassNameB,  final String p_RelationshipName ) throws XtumlException {
+    }
+
+    public void AddInstanceAttributes( final String p_ClassName,  final String p_InstanceName,  final String p_AttributeName,  final String p_AttributeValue ) throws XtumlException {
+    }
+
+    public void CreateClass( final String p_Name ) throws XtumlException {
+    }
+
+    public void AddAttributes( final String p_ClassName,  final String p_AttributeName,  final Types p_ORMType ) throws XtumlException {
+    }
+
+    public void CreateInstance( final String p_ClassName,  final String p_InstanceName ) throws XtumlException {
+    }
+
+
+
+    // outbound messages
+    public void SendAssociations( final String p_RelationshipName ) throws XtumlException {
+        if ( satisfied() ) send(new IORM.SendAssociations(p_RelationshipName));
+        else {
+        }
+    }
+    public void SendAccountsLog() throws XtumlException {
+        if ( satisfied() ) send(new IORM.SendAccountsLog());
+        else {
+        }
+    }
+    public void SendInstances( final String p_ClassName,  final String p_AttributeName,  final String p_AttributeValue ) throws XtumlException {
+        if ( satisfied() ) send(new IORM.SendInstances(p_ClassName, p_AttributeName, p_AttributeValue));
+        else {
+        }
+    }
+
+
+    @Override
+    public void deliver( IMessage message ) throws XtumlException {
+        if ( null == message ) throw new BadArgumentException( "Cannot deliver null message." );
+        switch ( message.getId() ) {
+            case IORM.SIGNAL_NO_READINSTANCES:
+                ReadInstances(StringUtil.deserialize(message.get(0)));
+                break;
+            case IORM.SIGNAL_NO_READASSOCIATIONS:
+                ReadAssociations(StringUtil.deserialize(message.get(0)));
+                break;
+            case IORM.SIGNAL_NO_READACCOUNTSLOG:
+                ReadAccountsLog();
+                break;
+            case IORM.SIGNAL_NO_UNRELATEINSTANCES:
+                UnrelateInstances(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)), StringUtil.deserialize(message.get(2)), StringUtil.deserialize(message.get(3)), StringUtil.deserialize(message.get(4)));
+                break;
+            case IORM.SIGNAL_NO_LOGACCOUNT:
+                LogAccount(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)), AccountEvents.deserialize(message.get(2)));
+                break;
+            case IORM.SIGNAL_NO_RELATEINSTANCES:
+                RelateInstances(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)), StringUtil.deserialize(message.get(2)), StringUtil.deserialize(message.get(3)), StringUtil.deserialize(message.get(4)));
+                break;
+            case IORM.SIGNAL_NO_RELATECLASSES:
+                RelateClasses(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)), StringUtil.deserialize(message.get(2)));
+                break;
+            case IORM.SIGNAL_NO_ADDINSTANCEATTRIBUTES:
+                AddInstanceAttributes(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)), StringUtil.deserialize(message.get(2)), StringUtil.deserialize(message.get(3)));
+                break;
+            case IORM.SIGNAL_NO_CREATECLASS:
+                CreateClass(StringUtil.deserialize(message.get(0)));
+                break;
+            case IORM.SIGNAL_NO_ADDATTRIBUTES:
+                AddAttributes(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)), Types.deserialize(message.get(2)));
+                break;
+            case IORM.SIGNAL_NO_CREATEINSTANCE:
+                CreateInstance(StringUtil.deserialize(message.get(0)), StringUtil.deserialize(message.get(1)));
+                break;
+        default:
+            throw new BadArgumentException( "Message not implemented by this port." );
+        }
+    }
+
+
+
+    @Override
+    public String getName() {
+        return "ORM";
+    }
+
+}

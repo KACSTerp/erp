@@ -1,13 +1,15 @@
 package deployment;
 
+import java.util.Date;
+
 public class SendEmployeeBonuses {
 	private String messageName;
 	private String p_BonusName;
-	private int p_Starting;
-	private int p_Ending;
+	private Date p_Starting;
+	private Date p_Ending;
 	private double p_Percent;
 	private double p_Amount;
-	public SendEmployeeBonuses(String messageName, String p_BonusName, int p_Starting2, int p_Ending2,
+	public SendEmployeeBonuses(String messageName, String p_BonusName, Date p_Starting2, Date p_Ending2,
 			double p_Percent2, double p_Amount2) {
 		this.messageName = messageName;
 		this.p_BonusName = p_BonusName;
@@ -28,16 +30,16 @@ public class SendEmployeeBonuses {
 	public void setP_BonusName(String p_BonusName) {
 		this.p_BonusName = p_BonusName;
 	}
-	public int getP_Starting() {
+	public Date getP_Starting() {
 		return p_Starting;
 	}
-	public void setP_Starting(int p_Starting) {
+	public void setP_Starting(Date p_Starting) {
 		this.p_Starting = p_Starting;
 	}
-	public int getP_Ending() {
+	public Date getP_Ending() {
 		return p_Ending;
 	}
-	public void setP_Ending(int p_Ending) {
+	public void setP_Ending(Date p_Ending) {
 		this.p_Ending = p_Ending;
 	}
 	public double getP_Percent() {

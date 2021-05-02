@@ -692,7 +692,14 @@ INSERT INTO SM_ACT
 	VALUES ("9d7906a7-facf-4377-987f-440d077f7bbc",
 	"ccb657ab-2034-4ec7-992b-409d7b739cb3",
 	1,
-	'
+	'className="AccountSpecification";
+InstanceName="account";
+ORM::CreateClass( Name:className);
+//name space issue forcing to use hard coded types 
+ORM::AddAttributes( ClassName:className, AttributeName:"Code", ORMType:Types::String );
+ORM::AddAttributes( ClassName:className, AttributeName:"Name", ORMType:Types::String );
+
+
 create object instance account of AccountSpecification;
 account.Code = "٢١";
 account.Name="تعويضات العاملين";
@@ -703,8 +710,10 @@ account.Name="السلع والخدمات";
 
 
 create object instance account of AccountSpecification;
+
 account.Code = "٢٣";
 account.Name="استهلاك الرأس المال الثابت";
+
 
 create object instance account of AccountSpecification;
 account.Code = "٢٤";
@@ -728,13 +737,21 @@ account.Code = "٢٨";
 account.Name="مصروفات أخرى";
  
 create object instance account of AccountSpecification;
-account.Code = "٣١";
+account.Code = "٣١"; 
 account.Name="أصول غير مالية";
 
 select many accounts from instances of AccountSpecification;
 for each account in accounts
 	create object instance expenditure of Expenditure;
 	relate account to expenditure across R180;
+end for;
+
+select many accounts from instances of AccountSpecification;
+for each account in accounts
+	ORM::CreateInstance( ClassName:className, InstanceName:InstanceName );
+	ORM::AddInstanceAttributes( ClassName:className, InstanceName:InstanceName, AttributeName:"Code", AttributeValue:account.Code);
+	ORM::AddInstanceAttributes( ClassName:className, InstanceName:InstanceName, AttributeName:"Name", AttributeValue:account.Name);
+
 end for;
 
 generate PEI1:AccountsComplete() to self;
@@ -1014,7 +1031,8 @@ INSERT INTO SM_ACT
 	VALUES ("4f66e612-e9fd-43fd-9c78-e551d8cc61eb",
 	"ccb657ab-2034-4ec7-992b-409d7b739cb3",
 	1,
-	'
+	'className="AccountSpecification";
+
 nameCode[6]= "311129";
 nameCode[5]="معدات وآلات أخرى متنوعة";
 nameCode[4]= "311126";
@@ -1027,16 +1045,28 @@ nameCode[1]="محطات وشبكات الاتصالات";
 select any account from instances of AccountSpecification where selected.Code =="٣١";
 i=6;
 while (i >=1)
+	instanceName="subaccount";
+	
 	create object instance subaccount of AccountSpecification;
 	subaccount.Code= nameCode[i];
 	subaccount.Name=nameCode[i-1];
+	ORM::CreateInstance( ClassName:className, InstanceName:instanceName );
+	ORM::AddInstanceAttributes( ClassName:className, InstanceName:instanceName, AttributeName:"Code", AttributeValue:subaccount.Code);
+	ORM::AddInstanceAttributes( ClassName:className, InstanceName:instanceName, AttributeName:"Name", AttributeValue:subaccount.Name);
+
 	relate subaccount to account across R80.''part'';
+	ORM::RelateInstances( ClassNameA:"AccountSpecification", ClassNameB:"AccountSpecification", RelationshipName:"part", InstanceKeyA:account.Code, InstanceKeyB:subaccount.Code);
 	i = i-2;
 end while;
 
 	create object instance programAccount of AccountSpecification;
 		programAccount.Code= "400750200";
-		programAccount.Name="إطلاق الأقمار الصناعية";
+		programAccount.Name="إطلاق الأقمار الصناعية"; 
+		instanceName="programAccount";
+		ORM::CreateInstance( ClassName:className, InstanceName:instanceName);
+		ORM::AddInstanceAttributes( ClassName:className, InstanceName:instanceName, AttributeName:"Code", AttributeValue:programAccount.Code);
+		ORM::AddInstanceAttributes( ClassName:className, InstanceName:instanceName, AttributeName:"Name", AttributeValue:programAccount.Name);
+
 	create object instance program of Program;
 	relate programAccount to program across R180;
 	select any account from instances of AccountSpecification where selected.Code =="311132";
