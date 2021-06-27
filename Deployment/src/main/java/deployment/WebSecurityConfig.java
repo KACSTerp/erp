@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .withUser("S.AbaAlkhail@kacst.edu.sa").password("{noop}12345").roles("Managers").and()
       .withUser("clive@kacst.edu.sa").password("{noop}12345").roles("Managers").and()
       .withUser("jrw@kacst.edu.sa").password("{noop}12345").roles("Managers").and()
-      .withUser("a.taha@kacst.edu.sa").password("{noop}12345").roles("Managers").and()
+      .withUser("Alasdar@kacst.edu.sa").password("{noop}12345").roles("Managers").and()
       .withUser("aaslubaie@kacst.edu.sa").password("{noop}12345").roles("Employees").and()
       .withUser("S.Alameer@kacst.edu.sa").password("{noop}12345").roles("Managers").and()
       .withUser("saleh@kacst.edu.sa").password("{noop}12345").roles("Finance").and()

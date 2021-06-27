@@ -18,6 +18,7 @@
     		  ])
     	      .then(axios.spread((roleResponse, idResponse) => {
                   this.role = roleResponse.data
+                  console.log(this.role)
                   if(this.role === "Managers")
                     $("#base").attr("src", "../base.js");
                   if(this.role === "Employees")

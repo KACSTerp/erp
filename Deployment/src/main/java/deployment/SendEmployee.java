@@ -1,5 +1,7 @@
 package deployment;
 
+import java.util.Date;
+
 public class SendEmployee {
 	private String messageName;
 	private int p_EmployeeID;
@@ -9,17 +11,17 @@ public class SendEmployee {
 	private String p_LastName;
 	private String p_Email;
 	private String p_OfficePhone;
-	private int p_DateOfBirth;
+	private Date p_DateOfBirth;
 	private String p_Degree;
 	private String p_Gender;
-	private int p_StartDate;
+	private Date p_StartDate;
 	private int p_LeaveBalance;
 	private int p_SickLeaveBalance;
 	private double p_Salary;
 	
 	public SendEmployee(String messageName, int p_EmployeeID, int p_NationalID, String p_FirstName,
-			String p_MiddleName, String p_LastName, String p_Email, String p_OfficePhone, int p_DateOfBirth,
-			String p_Degree, String p_Gender, int p_StartDate, int p_LeaveBalance, int p_SickLeaveBalance,
+			String p_MiddleName, String p_LastName, String p_Email, String p_OfficePhone, Date p_DateOfBirth,
+			String p_Degree, String p_Gender, Date p_StartDate, int p_LeaveBalance, int p_SickLeaveBalance,
 			double p_Salary) {
 		this.messageName = messageName;
 		this.p_EmployeeID = p_EmployeeID;
@@ -102,11 +104,11 @@ public class SendEmployee {
 		this.p_OfficePhone = p_OfficePhone;
 	}
 
-	public int getP_DateOfBirth() {
+	public Date getP_DateOfBirth() {
 		return p_DateOfBirth;
 	}
 
-	public void setP_DateOfBirth(int p_DateOfBirth) {
+	public void setP_DateOfBirth(Date p_DateOfBirth) {
 		this.p_DateOfBirth = p_DateOfBirth;
 	}
 
@@ -126,11 +128,11 @@ public class SendEmployee {
 		this.p_Gender = p_Gender;
 	}
 
-	public int getP_StartDate() {
+	public Date getP_StartDate() {
 		return p_StartDate;
 	}
 
-	public void setP_StartDate(int p_StartDate) {
+	public void setP_StartDate(Date p_StartDate) {
 		this.p_StartDate = p_StartDate;
 	}
 

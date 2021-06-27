@@ -142,11 +142,11 @@
 </div>
 <p><strong>الراتب:</strong> {{employee[0].p_Salary}}</p>
         <div v-if="allBonus[0]">
-        <div v-for="bonus in allBonus">
+        <div v-for="bonus, count in allBonus">
         <br>
     <p><strong>البدل:</strong> {{bonus.p_BonusName}}</p>
-    <p><strong>تاريخ البدء:</strong> {{bonus.p_Starting}}</p>
-    <p><strong>تاريخ الانتهاء:</strong> {{bonus.p_Ending}}</p>
+    <p><strong>تاريخ البدء:</strong> {{date[count]}}</p>
+    <p><strong>تاريخ الانتهاء:</strong> {{date[count]}}</p>
      <p><strong>النسبة:</strong> {{bonus.p_Percent}}</p>
      <p><strong>القيمة:</strong> {{ bonusResult(employee[0].p_Salary, bonus.p_Percent) }} </p>
      <hr>

@@ -47,6 +47,7 @@ import shared.IOps;
 import sharedtypes.Payitem;
 import sharedtypes.Paytype;
 import sharedtypes.Transaction;
+import sharedtypes.AccountEvents;
 import interfaces.IData;
 import interfaces.IAuthentication;
 import interfaces.IFinance;
@@ -281,6 +282,16 @@ public class UI extends Component<UI> {
         
     }
 
+    public void SendAccountLogs( final String p_Code,  final String p_Name,  final AccountEvents p_Action )throws XtumlException {
+    	    
+        try {
+              HRGuiController.Singleton().SendAccountLogs( p_Code, p_Name, p_Action );
+          }catch(Exception e) {
+              
+          }  
+        
+    }
+
     public void  SendSections( final String p_Code,  final String p_Name,  final int p_RequestedFund,  final int p_RequestedRevenue )throws XtumlException {
    	    
         try {
@@ -406,6 +417,26 @@ public class UI extends Component<UI> {
          }  
          
      }
+
+     public void  ReadAccountsLog()throws XtumlException {
+    
+        try {
+            HRGuiController.Singleton().ReadAccountsLog();
+        }catch(Exception e) {
+            
+        }  
+        
+    }
+
+    public void  LogAccount( final String p_Code,  final String p_Name,  final AccountEvents p_Action )throws XtumlException {
+    
+        try {
+            HRGuiController.Singleton().LogAccount(p_Code, p_Name, p_Action);
+        }catch(Exception e) {
+            
+        }  
+        
+    }
      
 
 

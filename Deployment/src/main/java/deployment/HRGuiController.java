@@ -1,6 +1,9 @@
 package deployment;
 
 import java.security.Principal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Calendar;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import hrsystem.Dbs;
 import hrsystem.UI;
 import hrsystem.hr.main.impl.EmployeeImpl.returnFromLeave;
 import io.ciera.runtime.summit.exceptions.XtumlException;
 import sharedtypes.Payitem;
 import sharedtypes.Paytype;
 import sharedtypes.Transaction;
+import sharedtypes.Types;
+import sharedtypes.AccountEvents;
 
 
 @RestController
@@ -66,6 +71,27 @@ private static HRGuiController singleton;
     		numberOfAccounts = numberOfAccounts();
     		numberOfProjects = numberOfProjects();
     		start++;
+    		Connection conn = null;
+    		Statement stmt = null;
+    		
+    		String url1 = "jdbc:mysql://localhost:<DatabasePort>/<DatabaseName>";// you should replace <DatabasePort> and <DatabaseName> to match your existing database note: mySQL default port is 3306
+            String user = "root";// root must match you admin user name
+            String password = "<Password>";// add you admin password  
+            conn = DriverManager.getConnection(url1, user, password);
+            if (conn != null) {
+                System.out.println("Connected to the database sqlDataBase");
+                stmt = conn.createStatement();
+                String sql = "CREATE TABLE LOGS " +
+                        "(p_Code VARCHAR(255) not NULL, " +
+                        " p_Name VARCHAR(255), " + 
+                        " p_Action VARCHAR(255)) "; 
+                stmt.executeUpdate(sql);
+                System.out.println("Created table in given database...");
+                if(stmt!=null)
+                    conn.close();
+                if(conn!=null)
+                    conn.close();
+            }
     		}
       	}
       	catch ( Exception e ) {
@@ -301,6 +327,24 @@ private static HRGuiController singleton;
 				}
 			}
 			UI.Singleton().App().PostFinanceMessage(userChecked.get(index).getP_EmployeeID(), finance.getP_Content(), finance.getP_Type(), finance.getP_Amount(), finance.getP_Account(), finance.getP_Description());
+			System.out.println("-------------" + finance.getP_Account() + "--------------");
+			System.out.println("-------------" + finance.getP_Account() + "--------------");
+			System.out.println("-------------" + AccountEvents.PAYMENTASSIGNED + "--------------");
+			/* 
+			
+
+			=========================================
+			=========================================
+			=========================================
+
+
+			==============
+			==========
+			====
+
+
+			*/
+			//Dbs.Singleton().DB().LogAccount(finance.getP_Account(), finance.getP_Account(), AccountEvents.PAYMENTASSIGNED);
 		} catch (XtumlException e) {
 			
 			e.printStackTrace();
@@ -683,10 +727,13 @@ private static HRGuiController singleton;
 			String p_LastName, String p_Email, String p_OfficePhone, int p_DateOfBirth, String p_Degree,
 			String p_Gender, int p_StartDate, int p_LeaveBalance, int p_SickLeaveBalance, double p_Salary) {
 		
-		
+			Date d = new Date((long) p_DateOfBirth * 1000);
+			System.out.println("p_DATE: " + p_DateOfBirth);
+			Date sd = new Date((long) p_StartDate * 1000);
+			System.out.println("p_DATE: " + p_StartDate);
 			SendEmployee msg = new SendEmployee( "SendEmployee",  p_EmployeeID ,  p_NationalID , p_FirstName, p_MiddleName, 
-																 p_LastName, p_Email, p_OfficePhone,  p_DateOfBirth , p_Degree,
-																 p_Gender, p_StartDate ,  p_LeaveBalance , p_SickLeaveBalance,  p_Salary );
+																 p_LastName, p_Email, p_OfficePhone,  d , p_Degree,
+																 p_Gender, sd ,  p_LeaveBalance , p_SickLeaveBalance,  p_Salary );
 			employeeList.add(msg);
 		
 	}
@@ -696,8 +743,13 @@ private static HRGuiController singleton;
 			double p_Amount) {
 		
 		try {
-			employeeBonusList.add(new SendEmployeeBonuses( "SendEmployeeBonuses", p_BonusName,  p_Starting ,
-					 											p_Ending ,  p_Percent ,  p_Amount ));
+			Date ds = new Date((long) p_Starting * 1000);
+			System.out.println("p_DATE: " + p_Starting);
+			Date de = new Date((long) p_Ending * 1000);
+			System.out.println("p_DATE: " + p_Ending);
+			
+			employeeBonusList.add(new SendEmployeeBonuses( "SendEmployeeBonuses", p_BonusName,  ds ,
+					 											de ,  p_Percent ,  p_Amount ));
 			
 		} catch (Exception e) {
 			
@@ -709,7 +761,11 @@ private static HRGuiController singleton;
 	public void SendEmployeeMessages(int p_LeaveRequesterID, int p_Starting, int p_Ending, String p_Content) {
 		
 		try {
-			employeeMessages.add(new SendEmployeeMessages( p_LeaveRequesterID, p_Starting, p_Ending, p_Content));
+			Date ds = new Date((long) p_Starting * 1000);
+			System.out.println("p_DATE: " + p_Starting);
+			Date de = new Date((long) p_Ending * 1000);
+			System.out.println("p_DATE: " + p_Ending);
+			employeeMessages.add(new SendEmployeeMessages( p_LeaveRequesterID, ds, de, p_Content));
 			
 		} catch (Exception e) {
 			
@@ -1270,20 +1326,14 @@ private static HRGuiController singleton;
 		}
 	}
 	
-	int operationalized = 0;
 	@PostMapping(path="/operationalize", consumes="application/json")
 	public void Operationalize(@RequestBody Budget budget) {
 		// TODO Auto-generated method stub
 		try {
-			if(operationalized == 0){
 			UI.Singleton().Finance().AcceptAllCeiling();
 			Thread.sleep(500);
 			accountCount = 2;
-			int thisYear = Calendar.getInstance().get(Calendar.YEAR);
-			System.out.println("----------"+thisYear);
-			UI.Singleton().Finance().Operationalize(String.valueOf(thisYear));
-			operationalized++;
-			}
+			UI.Singleton().Finance().Operationalize(budget.getP_Year());
 		} catch (XtumlException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1533,9 +1583,18 @@ private static HRGuiController singleton;
 		try {
 			chartOfAccount.clear();
 				
-			if(operationalized > 0) {
-				UI.Singleton().Finance().ReadChartAccounts();
+			if(accountCount == 0) {
+				UI.Singleton().Finance().AcceptCeiling("211111");
+				UI.Singleton().Finance().AcceptCeiling("211114");
+				Thread.sleep(300);
+				UI.Singleton().Finance().OperationalizeAccount("211111");
+				UI.Singleton().Finance().OperationalizeAccount("211114");
+			Thread.sleep(400);
+			accountCount++;
 			}
+			//for(int i = 0; i < sectionList.size(); i++) {
+				UI.Singleton().Finance().ReadChartAccounts();
+			//}
 				Thread.sleep(300);
 				return chartOfAccount;
 		} catch (XtumlException | InterruptedException e) {
@@ -1806,101 +1865,6 @@ private static HRGuiController singleton;
 		return null;
 	}
 
-	/*public void ReadCeiling(String p_BudgetYear ) {
-		// TODO Auto-generated method stub
-		try {
-			UI.Singleton().Finance().ReadCeiling(p_BudgetYear);
-		} catch (XtumlException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
-	
-	/*@GetMapping(path="/ReadExpenditureAccounts", produces="application/json")
-	public List<SendChapters> ReadExpenditureAccounts() {
-		// TODO Auto-generated method stub
-		try {
-			chapterList.clear();
-			Thread.sleep(700);
-			UI.Singleton().Finance().ReadExpenditureAccounts(budgetYear);
-			System.out.printf("///////////////---%s", budgetYear);
-			Thread.sleep(700);
-			for(int i = 0; i < chapterList.size(); i++)
-			System.out.println(chapterList.get(i).getP_Code() +", "+ chapterList.get(i).getP_Name() +", "+ chapterList.get(i).getP_Ceiling() +", "+ chapterList.get(i).getP_Requested());
-			return chapterList;
-		} catch (XtumlException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	
-
-	public void ReviewAccount(String p_Code ) {
-		// TODO Auto-generated method stub
-		try {
-			UI.Singleton().Finance().ReviewAccount(p_Code);
-		} catch (XtumlException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
-
-	
-	
-	/*@GetMapping(path="/readChapters", produces="application/json")
-	public List<SendChapters> ReadChapters() {
-		// TODO Auto-generated method stub
-		try {
-			chapterList.clear();
-			Thread.sleep(700);
-			System.out.printf("///////////////---%s", budgetYear);
-			UI.Singleton().Finance().ReadChapters(budgetYear);
-			Thread.sleep(700);
-			return chapterList;
-		} catch (XtumlException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}*/
-
-	/*public void ReadSectionsCeiling(String p_BudgetYear, String p_ChapterCode) {
-		// TODO Auto-generated method stub
-		try {
-			UI.Singleton().Finance().ReadSectionsCeiling(p_BudgetYear, p_ChapterCode);
-		} catch (XtumlException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
-	/*
-	@GetMapping(path="/readSectionsRequested", produces="application/json")
-	public List<SendSections> ReadSectionsRequested() {
-		// TODO Auto-generated method stub
-		try {
-			sectionList.clear();
-			Thread.sleep(700);
-			UI.Singleton().Finance().ReadSectionsRequested(budgetYear, chapterCode);
-			Thread.sleep(700);
-			return sectionList;
-		} catch (XtumlException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}*/
-
 	public void ReplyFinance(String p_msg, boolean p_state) {
 		
 		try {
@@ -1930,6 +1894,16 @@ private static HRGuiController singleton;
 		try {
 			sendAccountFundsList.add(new SendAccountFunds(p_Code, p_Name, p_New, p_Ceiling, p_Requested, p_CeilingRevenue, p_RequestedRevenue));
 			System.out.println("Here 2: " + p_Code +" Ceiling 2: " + p_Ceiling);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void SendAccountLogs( String p_Code, String p_Name, AccountEvents p_Action ) {
+		// TODO Auto-generated method stub
+		try {
+			//.add(new SendAccountsLog(p_Code, p_Name, p_Action));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2026,44 +2000,6 @@ private static HRGuiController singleton;
 			e.printStackTrace();
 		}
 	}
-
-	
-	
-
-	/*List<SendChapters> chapterList = new ArrayList<SendChapters>();
-	public void SendChapters(String p_Code, String p_Name, int p_Ceiling, int p_Requested) {
-		
-		try {
-			chapterList.add(new SendChapters( "SendChapters", p_Code, p_Name, String.valueOf( p_Ceiling ), String.valueOf( p_Requested )));
-			System.out.println("BudgetList========>" + p_Code); 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
-	
-	/*public void SendSectionsCeiling(String p_Code, String p_Name, int p_Fund, int p_Revenue) {
-		// TODO Auto-generated method stub
-		try {
-			SendSectionsCeiling msg = new SendSectionsCeiling( "SendSectionsCeiling", p_Code, p_Name, String.valueOf( p_Fund ), String.valueOf( p_Revenue ));
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void SendSectionsRequested(String p_Code, String p_Name, int p_RequestedFund, int p_RequestedRevenue) {
-		// TODO Auto-generated method stub
-		try {
-			SendSectionsRequested msg = new SendSectionsRequested( "SendSectionsRequested", p_Code, p_Name, String.valueOf( p_RequestedFund ), String.valueOf( p_RequestedRevenue ));
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	*/
 
 	@PostMapping(path="/addMilestone", consumes="application/json")
 	public void AddMilestone(String p_Name, String p_FullCode, String p_SucessCriteria, int p_CompletePlanned, int p_Weight, int p_Percentage, String p_Notes, String p_Initiative) {
@@ -2222,6 +2158,47 @@ private static HRGuiController singleton;
 		}
 	}
 
+	public void LogAccount(String p_Code, String p_Name, AccountEvents p_Action ) {
+		// TODO Auto-generated method stub
+		try {
+			UI.Singleton().LogAccount(p_Code,  p_Name,  p_Action);
+		} catch (XtumlException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void ReadAccountsLog() {
+		// TODO Auto-generated method stub
+		try {
+			UI.Singleton().ReadAccountsLog();
+		} catch (XtumlException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	public void SendAccountsLog(ArrayList<String> list) {
+		
+		try {
+			//.add(new SendAccountsLog(p_Code,  p_Name,  p_Action));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void SendAssociations(String p_RelationshipName ) {
+		
+		try {
+			//.add(new SendAccountsLog(p_Code,  p_Name,  p_Action));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	//methods that was not created by the compiler
 	
 	@GetMapping(path="/role", produces="application/json")
@@ -2230,15 +2207,16 @@ private static HRGuiController singleton;
 					   getAuthentication().getPrincipal();
 		String role = "null";
 		String principalRole = userDetails.getAuthorities().toString();
-			if(principalRole.equals("[role_Managers]") || principalRole.equals("[ROLE_Finance]")){
+			if(principalRole.equals("[ROLE_Managers]") || principalRole.equals("[ROLE_Finance]")){
 				role = "Managers";
+				System.out.println("Role ============> " + role);
 				return role;
 			}else {
-				if(principalRole.equals("[role_HR]")) {
+				if(principalRole.equals("[ROLE_HR]")) {
 					role = "HR";
 					return role;
 				}else {
-					if(principalRole.equals("[role_Employees]")) {
+					if(principalRole.equals("[ROLE_Employees]")) {
 						role = "Employees";
 					}
 				}
@@ -2492,4 +2470,52 @@ private static HRGuiController singleton;
     	System.out.println(diffsecond1);
     	System.out.println(diffsecond2);
 	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Testing DataBase 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * */
+	
+	@GetMapping(path="/testingDatabase")
+	public void testingDatabase() {
+			Book cleanCode = new Book("cleanCode", 123445, "Clean Code", "Robert C. Martin");
+			Book ExecutableUML = new Book("ExecutableUML", 123445, "Executable UML", "Mellor Balcer");
+			Person Feras = new Person("Feras", "Feras Alhassnan");
+			Library KingFahadLibrary = new Library("KingFahadLibrary", "King Fahd National Library");
+			
+			try {
+				Dbs.Singleton().ORM().RelateInstances("Person", "Book", "Loan", "Feras", "cleanCode");
+
+				Dbs.Singleton().ORM().RelateInstances("Library", "Book", "contains", "KingFahadLibrary", "cleanCode");
+				Dbs.Singleton().ORM().RelateInstances("Library", "Book", "contains", "KingFahadLibrary", "ExecutableUML");
+				
+				Dbs.Singleton().ORM().RelateClasses("Library", "Book", "contains");
+				Dbs.Singleton().ORM().RelateClasses("Person", "Library", "visits");
+				Dbs.Singleton().ORM().UnrelateInstances("Library", "Book", "contains", "KingFahadLibrary", "ExecutableUML");
+				Dbs.Singleton().ORM().ReadAssociations("Library");
+			} catch (XtumlException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
+	
 }

@@ -6,6 +6,7 @@ import hrsystem.Fms;
 import hrsystem.Hr;
 import hrsystem.Pm;
 import hrsystem.UI;
+import hrsystem.Dbs;
 
 import io.ciera.runtime.summit.application.ApplicationExecutor;
 import io.ciera.runtime.summit.application.IApplication;
@@ -30,7 +31,7 @@ public class DeploymentApplication extends SpringBootServletInitializer implemen
     private ApplicationExecutor[] executors;
 
     public DeploymentApplication() {
-        components = new IComponent<?>[5];
+        components = new IComponent<?>[6];
         executors = new ApplicationExecutor[1];
         singleton = this;
         setup( null, null );
@@ -54,41 +55,47 @@ public class DeploymentApplication extends SpringBootServletInitializer implemen
                 executors[i] = new ApplicationExecutor( "DeploymentApplicationExecutor" + i, args );
             }
         }
-        components[4] = new Pm(this, executors[0], 4);
-        components[2] = new Fms(this, executors[0], 2);
         components[0] = new Auth(this, executors[0], 0);
-        components[3] = new Hr(this, executors[0], 3);
+        components[5] = new Pm(this, executors[0], 5);
+        components[2] = new Dbs(this, executors[0], 2);
         components[1] = new UI(this, executors[0], 1);
-        ((Hr)components[3]).Authenticate().satisfy(((Auth)components[0]).HR());
-        ((Auth)components[0]).HR().satisfy(((Hr)components[3]).Authenticate());
-        ((UI)components[1]).App().satisfy(((Hr)components[3]).UI());
-        ((Hr)components[3]).UI().satisfy(((UI)components[1]).App());
-        ((UI)components[1]).AppOps().satisfy(((Hr)components[3]).UI_Ops());
-        ((Hr)components[3]).UI_Ops().satisfy(((UI)components[1]).AppOps());
+        components[3] = new Fms(this, executors[0], 3);
+        components[4] = new Hr(this, executors[0], 4);
+        ((UI)components[1]).App().satisfy(((Hr)components[4]).UI());
+        ((Hr)components[4]).UI().satisfy(((UI)components[1]).App());
+        ((UI)components[1]).AppOps().satisfy(((Hr)components[4]).UI_Ops());
+        ((Hr)components[4]).UI_Ops().satisfy(((UI)components[1]).AppOps());
         ((UI)components[1]).Authenticate().satisfy(((Auth)components[0]).UI());
         ((Auth)components[0]).UI().satisfy(((UI)components[1]).Authenticate());
-        ((UI)components[1]).Finance().satisfy(((Fms)components[2]).UI());
-        ((Fms)components[2]).UI().satisfy(((UI)components[1]).Finance());
-        ((UI)components[1]).Projects().satisfy(((Pm)components[4]).UI());
-        ((Pm)components[4]).UI().satisfy(((UI)components[1]).Projects());
+        ((UI)components[1]).Finance().satisfy(((Fms)components[3]).UI());
+        ((Fms)components[3]).UI().satisfy(((UI)components[1]).Finance());
+        ((UI)components[1]).Projects().satisfy(((Pm)components[5]).UI());
+        ((Pm)components[5]).UI().satisfy(((UI)components[1]).Projects());
+        ((Fms)components[3]).ORM().satisfy(((Dbs)components[2]).ORM());
+        ((Dbs)components[2]).ORM().satisfy(((Fms)components[3]).ORM());
+        ((Hr)components[4]).Authenticate().satisfy(((Auth)components[0]).HR());
+        ((Auth)components[0]).HR().satisfy(((Hr)components[4]).Authenticate());
     }
 
-    public Pm Pm() {
-        return (Pm)components[4];
-    }
-    public Fms Fms() {
-        return (Fms)components[2];
-    }
     public Auth Auth() {
         return (Auth)components[0];
     }
-    public Hr Hr() {
-        return (Hr)components[3];
+    public Pm Pm() {
+        return (Pm)components[5];
+    }
+    public Dbs Dbs() {
+        return (Dbs)components[2];
     }
     public UI UI() {
         return (UI)components[1];
     }
-
+    public Fms Fms() {
+        return (Fms)components[3];
+    }
+    public Hr Hr() {
+        return (Hr)components[4];
+    }
+    
     @Override
     public void initialize() {
         for ( IComponent<?> component : components ) {

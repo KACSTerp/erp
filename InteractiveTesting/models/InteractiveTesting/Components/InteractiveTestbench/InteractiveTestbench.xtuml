@@ -3207,6 +3207,42 @@ INSERT INTO C_EP_PROXY
 	'PendingTransfers',
 	'',
 	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b686c305-9355-4675-8f26-9f584a6db1d7",
+	"a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"18c4d4a6-d6b8-4b33-a159-183a0f9f0485");
+INSERT INTO SPR_RS
+	VALUES ("b686c305-9355-4675-8f26-9f584a6db1d7",
+	'ReadAccountsLog',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'ReadAccountsLog',
+	'',
+	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("61d572d6-3570-4742-82b6-9f8cb9b11fb4",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"18c4d4a6-d6b8-4b33-a159-183a0f9f0485");
+INSERT INTO SPR_RS
+	VALUES ("61d572d6-3570-4742-82b6-9f8cb9b11fb4",
+	'SendAccountsLog',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'SendAccountsLog',
+	'',
+	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("4050d50b-4358-41d0-aaf7-7da0e117e17c",
 	"00000000-0000-0000-0000-000000000000",

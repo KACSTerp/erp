@@ -233,21 +233,21 @@ tr:nth-child(odd) {
             <hr>
           <div class="col-md-12 col-sm-12 col-xs-12 body-search" id="search">
             <div class="row">
-              <div>
+              <div style="width: 100% !important">
     <br>
-    <div class="flex-container">
-    <div class="flex-child" style="width: 50% !important">
+    <div class="flex-container" style="width: 100% !important">
+    <div class="flex-child" style="width: 100% !important">
     <p><strong>التاريخ:</strong> {{date}}</p>
     <p><strong>الحساب الموظف المرسل:</strong> {{message.p_Sender}}</p>
 <p><strong>الوصف:</strong> {{message.p_Description}}</p>
     <br>
     </div>
-    <div class="flex-child" style="width: 50%">
+    <div class="flex-child" style="width: 1000%">
 <p><strong>نوع العملية:</strong> {{message.p_Type}}</p>
 <p><strong>المبلغ:</strong> {{message.p_Amount}}</p>
 <br>
 </div>
-<div class="flex-child" style="width: 50%">
+<div class="flex-child" style="width: 100%">
     <p><strong>الحساب:</strong> {{message.p_Account}}</p>
     <p><strong>المحتوى:</strong> {{message.p_Content}}</p>
 <button @click="submitPay">صرف</button>

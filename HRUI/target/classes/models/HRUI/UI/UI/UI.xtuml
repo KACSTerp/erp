@@ -1730,7 +1730,7 @@ INSERT INTO SPR_RS
 	'CreateJob',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("dc97b35f-e6b3-4ebb-bfd5-75ff93a4619c",
@@ -1748,7 +1748,7 @@ INSERT INTO SPR_RS
 	'CreateBonus',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("dc92126a-5bc2-40e4-a13b-6009747d86cf",
@@ -1766,7 +1766,7 @@ INSERT INTO SPR_RS
 	'EditEmployee',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("da90ce68-5e1a-462f-b3bf-af9eb17e7185",
@@ -1784,7 +1784,7 @@ INSERT INTO SPR_RS
 	'CreateDepartment',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("5ecfcadd-83ce-49f9-96ef-99a6d8648024",
@@ -1802,7 +1802,7 @@ INSERT INTO SPR_RS
 	'DeleteEmployee',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("f5453211-15b8-41a8-9d59-fedb2102012c",
@@ -1820,7 +1820,7 @@ INSERT INTO SPR_RS
 	'UnassignBonus',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b33a91da-1d71-48af-8823-a3a19f5aaa63",
@@ -1838,7 +1838,7 @@ INSERT INTO SPR_RS
 	'ReadApprovedPayItems',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("aa09d611-f31a-4432-8338-0ab25d7d2e03",
@@ -1856,7 +1856,7 @@ INSERT INTO SPR_RS
 	'PostFinanceMessage',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ae51d4cc-f120-4099-b0f3-4cc2121d679a",
@@ -1892,7 +1892,7 @@ INSERT INTO SPR_RS
 	'ReadAllPayItems',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("fc6a9cff-c426-41d3-bd1a-d59848a2711c",
@@ -2212,7 +2212,7 @@ INSERT INTO SPR_RS
 	'CreateInitiative',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("4d8c9fe4-1360-4d30-90fd-12402e63d2a3",
@@ -2230,7 +2230,7 @@ INSERT INTO SPR_RS
 	'CreateStrategy',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("a46a1746-64f0-4558-ae36-f10f118eaa24",
@@ -2248,7 +2248,7 @@ INSERT INTO SPR_RS
 	'CreateProject',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b68f3204-5e86-499d-88df-db00b93866ef",
@@ -2266,7 +2266,7 @@ INSERT INTO SPR_RS
 	'ReadInitiatives',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("1afcea8f-1baf-4bd0-999f-9363af4ca62d",
@@ -2302,7 +2302,7 @@ INSERT INTO SPR_RS
 	'ReadProjects',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("bc328c2e-2892-4f5f-869a-c51fcb125847",
@@ -2338,7 +2338,7 @@ INSERT INTO SPR_RS
 	'AddMilestone',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("823d6250-b774-4665-8272-9dc2cc28eadd",
@@ -2746,7 +2746,7 @@ INSERT INTO SPR_RS
 	'ReadAccepted',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("f4c86c50-3cbb-4efe-8ae7-d2336046cde3",
@@ -2764,7 +2764,7 @@ INSERT INTO SPR_RS
 	'ReadRejected',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("67fe4628-f24e-4262-b8dd-ba67c1070cf8",
@@ -2800,7 +2800,7 @@ INSERT INTO SPR_RS
 	'ReadAccounts',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7c0b0b8e-8aed-4f78-8fba-f2671976d884",
@@ -2818,7 +2818,7 @@ INSERT INTO SPR_RS
 	'AcceptAllRequested',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("9035e841-f394-4cac-949b-3dbd8846ee1b",
@@ -2836,7 +2836,7 @@ INSERT INTO SPR_RS
 	'AcceptAllCeiling',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("2066a758-e796-4d69-9ac9-ed03819719e5",
@@ -2854,7 +2854,7 @@ INSERT INTO SPR_RS
 	'CreateAccount',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("06fde7aa-a08d-478c-bcaa-ea497aac3e67",
@@ -2872,7 +2872,7 @@ INSERT INTO SPR_RS
 	'CreateProgram',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("d257ef17-118c-46f2-baee-50fc1bea26d2",
@@ -2890,7 +2890,7 @@ INSERT INTO SPR_RS
 	'ReadPrograms',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("02e23735-c427-4a5e-9847-9a45a7aec390",
@@ -2908,7 +2908,7 @@ INSERT INTO SPR_RS
 	'ReadTAccount',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b889a567-01cd-4c5f-8256-fb6cfebed0e1",
@@ -2944,7 +2944,7 @@ INSERT INTO SPR_RS
 	'ReadChartAccounts',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("6303db2a-0872-4a00-9303-e7f5c19f327a",
@@ -2982,7 +2982,7 @@ INSERT INTO SPR_RS
 	'ReadChartAccount',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("23c49591-ddb9-472c-a127-aac9bf81fd5b",
@@ -3000,7 +3000,7 @@ INSERT INTO SPR_RS
 	'CreateSalaryJournal',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("826bbbc5-69a0-4741-a185-2c93ffe2a1b1",
@@ -3018,7 +3018,7 @@ INSERT INTO SPR_RS
 	'AccountTransfers',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("65e6efde-caed-4815-8465-bbc6fa133eba",
@@ -3036,7 +3036,7 @@ INSERT INTO SPR_RS
 	'CreateTransfersJournal',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("fc97608a-1b57-458d-992c-b6c2c2a5b88f",
@@ -3054,7 +3054,7 @@ INSERT INTO SPR_RS
 	'AddTransferColumn',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("4b5177fb-2cac-4c7f-92b2-229c367f53b8",
@@ -3072,7 +3072,7 @@ INSERT INTO SPR_RS
 	'SettleTransfer',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("bb4e4d77-3f37-4c9c-94eb-e3f31dcbb010",
@@ -3090,7 +3090,7 @@ INSERT INTO SPR_RS
 	'ReadTransferColumns',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("1cf70f9f-c612-4f14-b4f6-3f2946648b55",
@@ -3126,7 +3126,7 @@ INSERT INTO SPR_RS
 	'AddFunds',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7c8d21ee-c826-4e65-8c5c-0da79421b849",
@@ -3144,7 +3144,7 @@ INSERT INTO SPR_RS
 	'ReduceFunds',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("58243d7f-7da7-4a71-b4f5-d861f0c33aa0",
@@ -3180,7 +3180,7 @@ INSERT INTO SPR_RS
 	'ReadProgram',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("983c1373-b2e3-4a25-9aa6-dd61c1d1c5a6",
@@ -3198,7 +3198,7 @@ INSERT INTO SPR_RS
 	'ReadAllBudgetAccounts',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("d03ec770-4b23-4379-a807-acf97011ad3d",
@@ -3234,7 +3234,7 @@ INSERT INTO SPR_RS
 	'ReadSalaryJournal',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("e140b130-5703-40b6-948f-73122844e333",
@@ -3252,7 +3252,7 @@ INSERT INTO SPR_RS
 	'ReadTransferJournal',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("c453de33-2cb1-4f48-ae7e-2c8e6e957c7a",
@@ -3270,7 +3270,7 @@ INSERT INTO SPR_RS
 	'CreateSubAccount',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("f8471943-f524-4541-840b-382b436abdb1",
@@ -3288,7 +3288,7 @@ INSERT INTO SPR_RS
 	'ReadBudgetAccounts',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("020d8e36-a283-4deb-b691-699a8f5e87cb",
@@ -3306,7 +3306,7 @@ INSERT INTO SPR_RS
 	'ReadBudgetPrograms',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7017f587-96d1-4ef0-a888-ae64cf3a63be",
@@ -3324,7 +3324,7 @@ INSERT INTO SPR_RS
 	'ModifyCeiling',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("cffbc631-c5c2-4077-9375-218b0527dee5",
@@ -3342,7 +3342,7 @@ INSERT INTO SPR_RS
 	'ModifyRequested',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("ff71f4ae-3892-42b1-9cf0-8c111dc2cb5b",
@@ -3360,7 +3360,7 @@ INSERT INTO SPR_RS
 	'CreateBudget',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("879d3639-0c10-48ed-99a6-0945d15c4708",
@@ -3378,7 +3378,7 @@ INSERT INTO SPR_RS
 	'Operationalize',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b54dad13-94d0-4401-a0df-ea4c05e12c85",
@@ -3396,7 +3396,7 @@ INSERT INTO SPR_RS
 	'DisregardBudget',
 	'Deleting a newly created budget which has not been operationalized ',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7494c7e6-90ba-46fb-9a3b-f79244ca26a6",
@@ -3414,7 +3414,7 @@ INSERT INTO SPR_RS
 	'ReadNewPrograms',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("c11a0355-c209-48be-86a2-ab205a9c805a",
@@ -3432,7 +3432,7 @@ INSERT INTO SPR_RS
 	'RelateProgram',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("3230f25e-00f9-42a1-a8b5-7fdd156e6f21",
@@ -3450,7 +3450,7 @@ INSERT INTO SPR_RS
 	'UnrelateProgram',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("7492ca92-a79c-4976-99cc-43df760f4934",
@@ -3468,7 +3468,7 @@ INSERT INTO SPR_RS
 	'ReadEarmarkedPrograms',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("667e9bbf-70b1-49ba-b025-5739c424bdca",
@@ -3486,7 +3486,7 @@ INSERT INTO SPR_RS
 	'ReadAllTransactions',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("beca86fe-b8bd-420a-bdcc-ffe5bde34313",
@@ -3504,7 +3504,7 @@ INSERT INTO SPR_RS
 	'PayAmount',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("2fb303f1-2fc6-4e57-809a-d781521877bb",
@@ -3522,7 +3522,7 @@ INSERT INTO SPR_RS
 	'PaySalary',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("94c5c798-cd59-4954-8dfc-deb2b48db517",
@@ -3540,7 +3540,7 @@ INSERT INTO SPR_RS
 	'PendingPay',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("80df410d-49f8-4e17-8c92-5c85b93bff92",
@@ -3558,7 +3558,7 @@ INSERT INTO SPR_RS
 	'ApproveTransfer',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("67b89449-cdac-4c8d-9204-005216c0c726",
@@ -3576,13 +3576,49 @@ INSERT INTO SPR_RS
 	'PendingTransfers',
 	'',
 	'',
-	3,
+	1,
 	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b76b55d1-346e-4f6f-aaa6-1e3c06fe8237",
 	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
 	-1,
 	'PendingTransfers',
+	'',
+	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a907c002-f914-46a2-9138-6e08375c35c1",
+	"a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"8d04e32c-c0e0-4a8b-a383-19d5284b5624");
+INSERT INTO SPR_RS
+	VALUES ("a907c002-f914-46a2-9138-6e08375c35c1",
+	'ReadAccountsLog',
+	'',
+	'',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("a45f9acb-d7aa-49f8-9504-e4febb1905a6",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'ReadAccountsLog',
+	'',
+	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6c462c0c-7458-41bd-b568-42ef28d44a66",
+	"c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"8d04e32c-c0e0-4a8b-a383-19d5284b5624");
+INSERT INTO SPR_RS
+	VALUES ("6c462c0c-7458-41bd-b568-42ef28d44a66",
+	'SendAccountsLog',
+	'',
+	'::SendAccountLogs( Code:param.Code, Name:param.Name, Action:param.Action);',
+	1,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("c2f407d1-1369-49aa-8fe8-c0f89af0c152",
+	"4050d50b-4358-41d0-aaf7-7da0e117e17c",
+	-1,
+	'SendAccountsLog',
 	'',
 	'../../../../../Finance/models/Finance/Interfaces/Finance/Finance.xtuml');
 INSERT INTO C_I_PROXY

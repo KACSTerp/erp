@@ -30,6 +30,36 @@ end if;
 	'',
 	"00000000-0000-0000-0000-000000000000",
 	0);
+INSERT INTO O_TFR
+	VALUES ("f7ae878e-5c03-4383-ba83-33dc394d4232",
+	"984907e3-7685-4dd3-bcec-0d191923ce57",
+	'Log',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one account related by self->Account[R30.''debits'']->AccountSpecification[R70.''served previously by''];
+ORM::LogAccount( Code:account.Code, Name:account.Name, Action:param.EventType); 
+',
+	1,
+	'',
+	"fd86b160-58ec-4a24-8eab-7bd1b11d2461",
+	0);
+INSERT INTO O_TPARM
+	VALUES ("90edc445-5433-4c57-865f-e3ccf2b68982",
+	"f7ae878e-5c03-4383-ba83-33dc394d4232",
+	'EventType',
+	"ff7466eb-0aff-45d9-bc48-3f240d210f84",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("ff7466eb-0aff-45d9-bc48-3f240d210f84",
+	"00000000-0000-0000-0000-000000000000",
+	'AccountEvents',
+	'',
+	'',
+	'../../../../SharedTypes/SharedTypes.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("9988063b-1215-4f81-8132-794730f65801",
 	"984907e3-7685-4dd3-bcec-0d191923ce57");
